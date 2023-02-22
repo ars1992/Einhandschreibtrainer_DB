@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <title>Login Schreibtrainer</title>
+    <style>
+      body {
+        background-color: rgb(41, 41, 41);
+        color: whitesmoke;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="headline row">
+        <hr />
+        <div class="col-7">
+          <h1 class="headline_main">Einhandschreibtrainer</h1>
+        </div>
+        <div class="login col-5">
+          <form action="php/form.php" class="login_form" method="POST">
+            <!-- <label for="" class="login_label">Email</label><br /> -->
+            <input
+              type="email"
+              class="login_email"
+              name="email"
+              placeholder="Email"
+            />
+            <!-- <label for="" class="login_label">Passwort</label><br /> -->
+            <input
+              type="password"
+              class="login_passwort"
+              name="passwort"
+              placeholder="Passwort"
+            />
+            <input
+              type="submit"
+              class="login_submit"
+              name="submit"
+              value="Login"
+            />
+          </form>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="regestrieren col-4">
+          <form
+            action="php/regestrieren.php"
+            class="regestrieren_form"
+            method="POST"
+          >
+            <h2 class="regestrieren_sub">Regestrieren</h2>
+            <label for="" class="regestrieren_label">Email</label>
+            <br />
+            <input type="email" class="regestrieren_email" name="email" />
+            <br />
+            <label for="" class="regestrieren_label">Passwort</label>
+            <br />
+            <input
+              type="password"
+              class="regestrieren_passwort1"
+              name="passwort1"
+            />
+            <br />
+            <label for="" class="regestrieren_label"
+              >Passwort wiederholen</label
+            >
+            <br />
+            <input
+              type="password"
+              class="regestrieren_passwort2"
+              name="passwort2"
+            />
+            <br />
+            <label for="" class="regestrieren_hand"
+              >Mit welcher Hand schreiben Sie</label
+            >
+            <br />
+            <input
+              type="radio"
+              name="hand"
+              value="rechts"
+              checked
+              class="regestrieren_handRechts"
+            />
+            Rechts
+            <br />
+            <input
+              type="radio"
+              name="hand"
+              value="links"
+              class="regestrieren_handLinks"
+            />Links
+
+            <input
+              type="submit"
+              class="regestrieren_submit"
+              name="submit"
+              value="Regestrieren"
+            />
+          </form>
+        </div>
+
+        <div class="text col-8">
+          <p class="text_paragraph">
+            Herzlich Willkommen bei meinem Übungsprogramm für die 5 Finger
+            Tastatur!
+          </p>
+          <p class="text_paragraph">
+            Mein Programm wurde speziell entwickelt, um Ihnen zu helfen, Ihre
+            Tippfähigkeiten auf der Tastatur zu verbessern. Mit den Funktionen
+            unserer Webanwendung können Sie Ihre Fingerfertigkeit trainieren und
+            Ihre Schreibgeschwindigkeit steigern.
+          </p>
+          <p class="text_paragraph">
+            Nach erfolgreicher Registrierung können Sie mit dem Üben beginnen.
+            Sie können einfach einen Übungstext auswählen und die Einstellungen
+            an Ihre Bedürfnisse anpassen. Während Sie üben, werden Ihre
+            Fortschritte gespeichert, so dass Sie Ihren Erfolg verfolgen und
+            Ihre Schwächen gezielt verbessern können.
+          </p>
+          <p class="text_paragraph">
+            Ich bin stolz darauf, Ihnen ein Übungsprogramm anbieten zu können,
+            das nicht nur effektiv ist, sondern auch Spaß macht. ich hoffe, dass
+            Sie mit meinem Programm Ihre Fähigkeiten auf der 5 Finger Tastatur
+            verbessern und Ihre Schreibgeschwindigkeit steigern können.
+          </p>
+        </div>
+        <hr />
+      </div>
+      <div class="row">
+        <p class="col-3">ghgcjgjg</p>
+
+        <div class="bilder col-3">
+          <img
+            src="img/tasta_rechts.png"
+            alt="menue"
+            title="Menü"
+            class="bilder_img "
+          />
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/cookie.js"></script>
+  </body>
+</html>

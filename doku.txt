@@ -1,0 +1,55 @@
+// Ziel Programm oop $
+- erledigt
+
+true und false bei jsonreader verstehen 
+// tastenkompinationen beste lösung überlegen $
+- funktionen
+// erste leertaste wird als anschlag gezählt $
+- mit -1 in der formel gelöst
+// leertasten im textlauf $
+- mit input tags gelöst 
+
+// als nächstes in json datei schreiben $
+-erledigt über php ind open(in js ajax)
+//auswertungs objekt zu person speichern 
+- noch implementiren
+person log in !!!!!!!!!!!!! in php iwie
+- kann ausgehebelt werden
+google ads
+design 
+// rechte hand linke hand zur person speichern als objekt ? $
+- in jason datei
+main.js als min.js erstellen
+js serverseitig
+// JsonTextlader php skripte holen 
+- ka was ich damit wollte
+
+//auswertung zu user implementiren. zuordnung über cookie(berits implementirt) nur noch verwenden
+- erledigt wird aufsummiert
+auswertung in json überdenken. immer array dazu besser für statistik
+problem 2 dateien rechts links immer zwei mal ändern !! css und andere klassen
+groß W im textlauf. vlt aktueller buchstabe width auto ?
+!! umgehen des login möglich
+location.refresh() ggf ersetzen mit WebSocket
+login mit bootstrap !! lohnt sich bootsrap im momment seh ich kein vorteil
+Zwischen Seite nach login
+//Auswertung table zum scrollen und Datum mit uhrzeit
+- datum mit uhrzeit erledigt auswertung auch erledigt
+css tastatur in sass less keine ahnung !! erst wenn alles fertig ist
+// speichern button für auswertung
+- erledigt
+Benutzerhandbuch über info button || im header mit anmeldename un menü 
+Python zur auswertungsanalyse
+json zu db
+evt fehleranzeige mit roter anzeige border text
+insgesammt 8 texte
+
+//dateien ordnen
+-erledigt 
+//fehleranzeige fertig mit js alle generiren div ist zum scrollen
+-erledigt
+startseite
+
+
+funktionsschreibweise welche this. zulässt ist besser
+da weis man das man sich im objekt befindet Kapselung
