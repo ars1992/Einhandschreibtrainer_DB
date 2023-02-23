@@ -119,7 +119,7 @@ const DatenAnJsonSenden = {
     send: function () {
         let xml = new XMLHttpRequest
         if (this._auswertungsDaten !== null) {
-            xml.open("GET", "../php/injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), true)
+            xml.open("GET", "injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
             xml.send()
         } else {
             console.log("keine Daten vorhanden")
@@ -211,7 +211,7 @@ const DatenSpeichern = {
             AuswertungBearbeiten.datenAktualisiren()
             DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
             Auswertung.allesZurückSetzen()
-            // location.reload()
+            location.reload()
         })
     }
 }
@@ -363,6 +363,7 @@ const JsonTextlader = {
         xml.onreadystatechange = function () {
             if (xml.readyState === 4 && xml.status === 200) {
                 JsonTextlader.data = xml.responseText
+                console.log(JsonTextlader.data)
             }
         }
 
@@ -378,6 +379,7 @@ const JsonTextlader = {
         const texte = JSON.parse(JsonTextlader.data, { encoding: "utf-8" })
         for (const text in texte) {
             if (text === auswahl) {
+                console.log(texte[text])
                 return texte[text]
             }
         }
@@ -393,7 +395,7 @@ const Menue = {
     menueAnschlagAusgabe: document.querySelector(".menue_anschlaegeMin"),
     menueZeitAusgabe: document.querySelector(".menue_timer"),
 
-    _userTime: 10,
+    _userTime: 120,
     _time: null,
     _aktTime: 0,
     _anschlaegeProMin: 0,

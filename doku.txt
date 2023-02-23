@@ -1,55 +1,109 @@
-// Ziel Programm oop $
-- erledigt
+#############################################################################
+Aufgaben
 
 true und false bei jsonreader verstehen 
+- synchron oder asynchron hatte bei async öfter probleme (speichern, datenAktualisiren php warnungen)
+
+google ads
+
+design  header footer zwischen seiten 
+
+main.js als min.js erstellen
+
+js serverseitig
+
+auswertung in json überdenken. immer array dazu besser für statistik
+
+groß W im textlauf. vlt aktueller buchstabe width auto ?
+
+location.refresh() ggf ersetzen mit WebSocket
+
+css tastatur in sass less keine ahnung !! erst wenn alles fertig ist
+
+Benutzerhandbuch über info button || im header mit anmeldename un menü 
+
+Python zur auswertungsanalyse
+
+json zu db
+
+evt fehleranzeige mit roter anzeige border text
+
+console.log() entfernen
+
+fehlermeldungen in php ausschalten 
+
+//dateien ordnen
+-iwie nie erledigt
+
+speichern im auge behalten
+
+Auswertung.allesZurückSetzen inhalt nötig mit location reload
+
+Erkenntnise
+#################################################################################
+
+funktionsschreibweise welche this. zulässt ist besser
+da weis man das man sich im objekt befindet Kapselung
+
+daten können auch mit fetch() geholt werden laut buch neuer als xml ajax s549
+evt auch hochladen s556
+
+
+#################################################################################
+Abgeschlossen
+//fehleranzeige fertig mit js alle generiren div ist zum scrollen
+-erledigt || über jtml tamplate wäre evt auch bei der 5fähler auswertung möglich
+
+//startseite
+- erledigt || only bootsrap auser bg genaue positionirung fellt mir schwer
+
+//insgesammt 8 texte
+-sind jetzt 7 || musste den ordner über die url direct aktualliren
+
+// speichern button für auswertung
+- erledigt || noch php umzug probleme php fehler (keine daten) in js alles synchron gestellt
+
+//Auswertung table zum scrollen und Datum mit uhrzeit
+- datum mit uhrzeit erledigt auswertung auch erledigt || gesamt auswertung jetzt zum scollen 
+- mit datum keine großen probleme in js formatirt 
+
+//Zwischen Seite nach login || an sich selbst senden
+- tastatur in php datei an die die daten gesendet werden 
+- zwischen if aufgeteilt wegen css dateien  
+    !! umgehen des login möglich
+    - jetzt anscheinend nicht mehr evt schönere meldungen bei versuch
+    person log in !!!!!!!!!!!!! in php iwie
+    - kann ausgehebelt werden ist jetzt in php 
+
+//login mit bootstrap !! lohnt sich bootsrap im momment seh ich kein vorteil
+- erledigt ja kann gut sein komme mit der doku nicht zurecht 
+
+// Ziel Programm oop $
+- erledigt wesentlich übersichtlicher evt schlampig mit der kapselung
+
 // tastenkompinationen beste lösung überlegen $
-- funktionen
+- funktionen 
+
 // erste leertaste wird als anschlag gezählt $
 - mit -1 in der formel gelöst
+
 // leertasten im textlauf $
 - mit input tags gelöst 
 
 // als nächstes in json datei schreiben $
--erledigt über php ind open(in js ajax)
+-erledigt über php ind open(in js ajax) auch mit fetch ggf möglich noch nichtgestestet
+
 //auswertungs objekt zu person speichern 
-- noch implementiren
-person log in !!!!!!!!!!!!! in php iwie
-- kann ausgehebelt werden
-google ads
-design 
+- funktionirt im momment
+
 // rechte hand linke hand zur person speichern als objekt ? $
 - in jason datei
-main.js als min.js erstellen
-js serverseitig
+
 // JsonTextlader php skripte holen 
-- ka was ich damit wollte
+- bei neuen daten in texte.json probleme mit datenAktualisiren von apache 
 
 //auswertung zu user implementiren. zuordnung über cookie(berits implementirt) nur noch verwenden
 - erledigt wird aufsummiert
-auswertung in json überdenken. immer array dazu besser für statistik
+
 problem 2 dateien rechts links immer zwei mal ändern !! css und andere klassen
-groß W im textlauf. vlt aktueller buchstabe width auto ?
-!! umgehen des login möglich
-location.refresh() ggf ersetzen mit WebSocket
-login mit bootstrap !! lohnt sich bootsrap im momment seh ich kein vorteil
-Zwischen Seite nach login
-//Auswertung table zum scrollen und Datum mit uhrzeit
-- datum mit uhrzeit erledigt auswertung auch erledigt
-css tastatur in sass less keine ahnung !! erst wenn alles fertig ist
-// speichern button für auswertung
-- erledigt
-Benutzerhandbuch über info button || im header mit anmeldename un menü 
-Python zur auswertungsanalyse
-json zu db
-evt fehleranzeige mit roter anzeige border text
-insgesammt 8 texte
-
-//dateien ordnen
--erledigt 
-//fehleranzeige fertig mit js alle generiren div ist zum scrollen
--erledigt
-startseite
-
-
-funktionsschreibweise welche this. zulässt ist besser
-da weis man das man sich im objekt befindet Kapselung
+- s539 s jetzt in php nur noch 1 body und 2 heads in bedingung

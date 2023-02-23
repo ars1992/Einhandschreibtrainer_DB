@@ -11,7 +11,7 @@ body{
     grid-template-columns: repeat(10, 10%);
     grid-template-rows: repeat(6, auto);
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     margin-top: 5vw;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -22,7 +22,7 @@ body{
     grid-column: 3/8;
     grid-row: 2/6;
     background-color: rgb(41, 41, 41);
-    border: 0.3vw lawngreen solid;
+    border: 0.1vw whitesmoke solid;
 }
 
 .tasta_grid{
@@ -33,16 +33,21 @@ body{
 
 .taste{
     background-color: whitesmoke;
+    background-color: rgb(41, 41, 41);
+    color: whitesmoke;
+
+
     width: 5vw;
     height: 5vw;
     margin: 1vw;
-    border-radius: 10%;
+    /* border-radius: 10%; */
     display: flex;
     align-items:center;
     justify-content: center;
     font-size: 2vw;
-    border-bottom: 0.3vw black solid;
-    border-right: 0.3vw black solid;
+    border-bottom: 0.1vw whitesmoke solid;
+    border-right: 0.1vw whitesmoke solid;
+
 }
 
 
@@ -58,6 +63,8 @@ body{
     grid-column: 9;
     grid-row: 2;
     background-color: blue;
+    background-color: rgb(41, 41, 41);
+
     color: whitesmoke;
 }
 
@@ -89,6 +96,8 @@ body{
     grid-column: 8;
     grid-row: 3;
     background-color: yellow;
+    background-color: rgb(41, 41, 41);
+
 }
 
 .tasta_taste-rot{
@@ -96,18 +105,24 @@ body{
     grid-column: 6;
     grid-row: 3;
     background-color: red;
+    background-color: rgb(41, 41, 41);
+
 }
 
 .tasta_taste-9{
     grid-column: 6;
     grid-row: 4;
     background-color: darkblue;
+    background-color: rgb(41, 41, 41);
+
 }
 
 .tasta_taste-10{
     grid-column: 4;
     grid-row: 4;
     background-color: darkblue;
+    background-color: rgb(41, 41, 41);
+
 }
 
 /* Spezielle Anzeigen */
@@ -136,6 +151,7 @@ body{
     background-color: whitesmoke;
 }
 
+/* Start */
 .start_paragraph{
     margin: 1vw 0;
     transition: 1s;
@@ -144,7 +160,7 @@ body{
 .start_flackern{
     transition: 2s;
     font-size: 1vw;
-    color: rgb(41, 41, 41);
+    color: whitesmoke;
     margin-top: 1vw;
     margin-bottom: 1vw;
     text-shadow: 1vw 1vw 1vw;
@@ -156,9 +172,9 @@ body{
     grid-column: 3/9;
     text-align: center;
     font-size: 2vw;
-    background-color: aqua;
+    /* background-color: aqua; */
     color: rgb(41, 41, 41);
-    border-radius: 0 0 0 5vw;
-    border-bottom: 0.7vw lawngreen solid;
+    /* border-radius: 0 0 0 5vw; */
+    border-bottom: 0.1vw whitesmoke solid;
 }
 

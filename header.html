@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HEader</title>
+
+    <link rel="stylesheet" href="css/reset.css" />
+
+    <style>
+      .header {
+        background-color: rgb(41, 41, 41);
+        color: whitesmoke;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+
+      .headline {
+        font-size: 3vw;
+      }
+
+      .username {
+        font-size: 1vw;
+      }
+
+      .menue{
+        font-size: 1vw;
+      }
+
+      .dis-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        height: 5vw;
+      }
+
+      .border{
+        border-bottom: 0.3vw lawngreen solid;
+        border-radius: 8vw 0 8vw 0;
+        border-top: 0.3vw aqua solid;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="dis-flex border">
+        <div class="username dis-flex">
+          <div>
+            <h2 class="username_sub">Sie sind eingeloggt :</h2>
+            <span class="username_span">alessandro@salomon.gmx.de</span>
+          </div>
+        </div>
+        <div class="headline dis-flex">
+          <h1 class="headline_main">Einhandschreibtrainer</h1>
+        </div>
+        <div class="menue dis-flex">
+          <h2 class="menue_sub">Hilfe</h2>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>
