@@ -32,8 +32,8 @@ body{
 }
 
 .taste{
-    background-color: whitesmoke;
-    background-color: rgb(41, 41, 41);
+    /* background-color: whitesmoke; */
+    /* background-color: rgb(41, 41, 41); */
     color: whitesmoke;
 
 
@@ -62,9 +62,10 @@ body{
     margin-left: 3vw;
     grid-column: 9;
     grid-row: 2;
-    background-color: blue;
-    background-color: rgb(41, 41, 41);
-
+    /* background-color: blue; */
+    /* background-color: rgb(41, 41, 41); */
+    border-bottom: 0.1vw blue solid;
+    border-right: 0.1vw blue solid;
     color: whitesmoke;
 }
 
@@ -95,8 +96,10 @@ body{
     margin-top: -1vw;
     grid-column: 8;
     grid-row: 3;
-    background-color: yellow;
-    background-color: rgb(41, 41, 41);
+    /* background-color: yellow; */
+    /* background-color: rgb(41, 41, 41); */
+    border-bottom: 0.1vw yellow solid;
+    border-right: 0.1vw yellow solid;
 
 }
 
@@ -104,24 +107,30 @@ body{
     margin-top: -4vw;
     grid-column: 6;
     grid-row: 3;
-    background-color: red;
-    background-color: rgb(41, 41, 41);
+    /* background-color: red; */
+    /* background-color: rgb(41, 41, 41); */
+    border-bottom: 0.1vw red solid;
+    border-right: 0.1vw red solid;
 
 }
 
 .tasta_taste-9{
     grid-column: 6;
     grid-row: 4;
-    background-color: darkblue;
-    background-color: rgb(41, 41, 41);
+    /* background-color: darkblue; */
+    /* background-color: rgb(41, 41, 41); */
+    border-bottom: 0.1vw darkblue solid;
+    border-right: 0.1vw darkblue solid;
 
 }
 
 .tasta_taste-10{
     grid-column: 4;
     grid-row: 4;
-    background-color: darkblue;
-    background-color: rgb(41, 41, 41);
+    /* background-color: darkblue;
+    background-color: rgb(41, 41, 41); */
+    border-bottom: 0.1vw darkblue solid;
+    border-right: 0.1vw darkblue solid;
 
 }
 

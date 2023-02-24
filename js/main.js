@@ -210,7 +210,7 @@ const DatenSpeichern = {
             AuswertungBearbeiten.auswertungAusDatenHolen()
             AuswertungBearbeiten.datenAktualisiren()
             DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
-            Auswertung.allesZurückSetzen()
+            // Auswertung.allesZurückSetzen()
             location.reload()
         })
     }
@@ -286,25 +286,24 @@ const Auswertung = {
         Auswertung.resetButton.addEventListener("click", Auswertung.allesZurückSetzen)
     },
 
-    n: 2,
     allesZurückSetzen: () => {
-        Auswertung.auswertungAnzeigen.classList.remove("auswertung_notNone")
-        Auswertung.auswertungAnzeigen.classList.add("auswertung_none")
+        // Auswertung.auswertungAnzeigen.classList.remove("auswertung_notNone")
+        // Auswertung.auswertungAnzeigen.classList.add("auswertung_none")
 
-        StartAnzeige._startAusgabe.startDiv.classList.remove("auswertung_none")
-        StartAnzeige.flackernAnzeige()
-        Tastatur.setTextCounter(0)
-        Menue.setAnzeigeZeitAnschlagAufNull()
-        let n = Auswertung.n++
-        Menue.ausgewählterText = `V${n}.0 Schreibtrainer`
+        // StartAnzeige._startAusgabe.startDiv.classList.remove("auswertung_none")
+        // StartAnzeige.flackernAnzeige()
+        // Tastatur.setTextCounter(0)
+        // Menue.setAnzeigeZeitAnschlagAufNull()
+        // // let n = Auswertung.n++
+        // // Menue.ausgewählterText = `V${n}.0 Schreibtrainer`
 
-        Tastatur.clearTastatur()
-        TextLauf.laufenderText(Tastatur.textCounter)
+        // Tastatur.clearTastatur()
+        // TextLauf.laufenderText(Tastatur.textCounter)
 
-        fehlerVerarbeitung.setFehlerZurückSetzen()
+        // fehlerVerarbeitung.setFehlerZurückSetzen()
 
-        ProgrammStart.gestartet = false
-        Auswertung.inAuswertung = false
+        // ProgrammStart.gestartet = false
+        // Auswertung.inAuswertung = false
         location.reload()
     },
 
@@ -363,7 +362,6 @@ const JsonTextlader = {
         xml.onreadystatechange = function () {
             if (xml.readyState === 4 && xml.status === 200) {
                 JsonTextlader.data = xml.responseText
-                console.log(JsonTextlader.data)
             }
         }
 
@@ -379,7 +377,6 @@ const JsonTextlader = {
         const texte = JSON.parse(JsonTextlader.data, { encoding: "utf-8" })
         for (const text in texte) {
             if (text === auswahl) {
-                console.log(texte[text])
                 return texte[text]
             }
         }
@@ -888,7 +885,7 @@ const Tastatur = {
         // Zahlen
         for (const zahl of zahlen) {
             if (zahl[0] === aktuelleTaste) {
-                Tastatur.einzelneTastenSonderzeichen.sonderzeichenAnzeige("Gelb")
+                Tastatur.einzelneTastenSonderzeichen.sonderzeichenAnzeige("Rot")
                 zahl[1]()
                 return
             }
