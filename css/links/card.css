@@ -35,8 +35,6 @@ body{
     /* background-color: whitesmoke; */
     /* background-color: rgb(41, 41, 41); */
     color: whitesmoke;
-
-
     width: 5vw;
     height: 5vw;
     margin: 1vw;
@@ -100,7 +98,6 @@ body{
     /* background-color: rgb(41, 41, 41); */
     border-bottom: 0.1vw yellow solid;
     border-right: 0.1vw yellow solid;
-
 }
 
 .tasta_taste-rot{

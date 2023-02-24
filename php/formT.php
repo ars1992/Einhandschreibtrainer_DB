@@ -150,10 +150,10 @@ $body = '
 </html>';
 
 if (!$email or !$passwort) {
-    echo "<h1> 404 </h1>";
-    return;
+  echo "<h1> 404 </h1>";
+  return;
 } else {
-    istUserLoginOk($json_decoded, $email, $passwort, $body);
+  istUserLoginOk($json_decoded, $email, $passwort, $body);
 }
 
 
@@ -163,45 +163,45 @@ if (!$email or !$passwort) {
 // http://localhost/files/testLogin/Tastatur/rechts/tastaRechts.html
 function istUserLoginOk($json_decoded, $email, $passwort, $body)
 {
-    foreach ($json_decoded->users as $name => $wert) {
-        if ($wert->email == $email  && password_verify($passwort, $wert->passwort)) {
-            if ($wert->hand == "links") {
-                echo '<!DOCTYPE html>
+  foreach ($json_decoded->users as $name => $wert) {
+    if ($wert->email == $email  && password_verify($passwort, $wert->passwort)) {
+      if ($wert->hand == "links") {
+        echo '<!DOCTYPE html>
                 <html lang="de">
                   <head>
                     <meta charset="UTF-8" />
                     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                
                     <link rel="stylesheet" href="../css/reset.css" />
                     <link rel="stylesheet" href="../css/links/card.css" />
                     <link rel="stylesheet" href="../css/links/text.css" />
                     <link rel="stylesheet" href="../css/links/menue.css" />
                     <link rel="stylesheet" href="../css/auswertung.css">
                     <link rel="stylesheet" href="../css/header.css">
-
                     <title>Tastatur Links</title>
                   </head>';
-                
-            } else {
-                echo '<!DOCTYPE html>
+      } else {
+        echo '<!DOCTYPE html>
                 <html lang="de">
                   <head>
                     <meta charset="UTF-8" />
                     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                     <link rel="stylesheet" href="../css/reset.css" />
+                    <link rel="stylesheet" href="../css/links/card.css">
                     <link rel="stylesheet" href="../css/rechts/card_R.css" />
+                    <link rel="stylesheet" href="../css/links/text.css">
                     <link rel="stylesheet" href="../css/rechts/text_R.css" />
+                    <link rel="stylesheet" href="../css/links/menue.css">
                     <link rel="stylesheet" href="../css/rechts/menue_R.css" />
                     <link rel="stylesheet" href="../css/auswertung.css">
                     <link rel="stylesheet" href="../css/header.css">
                     <title>Tastatur Rechts</title>
                   </head>';
-            }
-            echo $body;
-            return;
-        }
+      }
+      echo $body;
+      return;
     }
-    echo "Passwort oder Email nicht bekannt";
+  }
+  echo "Passwort oder Email nicht bekannt";
 };

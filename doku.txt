@@ -16,7 +16,7 @@ auswertung in json überdenken. immer array dazu besser für statistik
 
 groß W im textlauf. vlt aktueller buchstabe width auto ?
 
-location.refresh() ggf ersetzen mit WebSocket
+location.reload() ggf ersetzen mit WebSocket
 
 css tastatur in sass less keine ahnung !! erst wenn alles fertig ist
 
@@ -30,14 +30,16 @@ evt fehleranzeige mit roter anzeige border text
 
 console.log() entfernen
 
-fehlermeldungen in php ausschalten 
+fehlermeldungen in php ausschalten || steht im buch sicherheit
 
 //dateien ordnen
 -iwie nie erledigt
 
-speichern im auge behalten
+speichern im auge behalten || manchmal geht es und manchmal nicht 
+- anscheinend muss ich die json datei einmal aktualisiren 
 
 Auswertung.allesZurückSetzen inhalt nötig mit location reload
+- funktionirt nur mit location.reload
 
 Erkenntnise
 #################################################################################
