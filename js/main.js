@@ -210,8 +210,8 @@ const DatenSpeichern = {
             AuswertungBearbeiten.auswertungAusDatenHolen()
             AuswertungBearbeiten.datenAktualisiren()
             DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
-            // Auswertung.allesZurückSetzen()
-            location.reload()
+            Auswertung.allesZurückSetzen()
+            location.reload("../json/newUser.json")
         })
     }
 }
@@ -287,24 +287,24 @@ const Auswertung = {
     },
 
     allesZurückSetzen: () => {
-        // Auswertung.auswertungAnzeigen.classList.remove("auswertung_notNone")
-        // Auswertung.auswertungAnzeigen.classList.add("auswertung_none")
+        Auswertung.auswertungAnzeigen.classList.remove("auswertung_notNone")
+        Auswertung.auswertungAnzeigen.classList.add("auswertung_none")
 
-        // StartAnzeige._startAusgabe.startDiv.classList.remove("auswertung_none")
-        // StartAnzeige.flackernAnzeige()
-        // Tastatur.setTextCounter(0)
-        // Menue.setAnzeigeZeitAnschlagAufNull()
-        // // let n = Auswertung.n++
-        // // Menue.ausgewählterText = `V${n}.0 Schreibtrainer`
+        StartAnzeige._startAusgabe.startDiv.classList.remove("auswertung_none")
+        StartAnzeige.flackernAnzeige()
+        Tastatur.setTextCounter(0)
+        Menue.setAnzeigeZeitAnschlagAufNull()
+        // let n = Auswertung.n++
+        // Menue.ausgewählterText = `V${n}.0 Schreibtrainer`
 
-        // Tastatur.clearTastatur()
-        // TextLauf.laufenderText(Tastatur.textCounter)
+        Tastatur.clearTastatur()
+        TextLauf.laufenderText(Tastatur.textCounter)
 
-        // fehlerVerarbeitung.setFehlerZurückSetzen()
+        fehlerVerarbeitung.setFehlerZurückSetzen()
 
-        // ProgrammStart.gestartet = false
-        // Auswertung.inAuswertung = false
-        location.reload()
+        ProgrammStart.gestartet = false
+        Auswertung.inAuswertung = false
+        // location.reload()
     },
 
     erstellenGesamtAuswertung: () => {
@@ -380,6 +380,14 @@ const JsonTextlader = {
                 return texte[text]
             }
         }
+    }
+}
+
+const Header = {
+    usernameSpan: document.querySelector(".username_span"),
+    
+    setUsername: function(){
+        this.usernameSpan.innerText = cookieVerwalten.getCookie("user")
     }
 }
 
@@ -949,6 +957,7 @@ const ProgrammStart = {
     gestartet: false,
 
     immer: () => {
+        Header.setUsername()
         StartAnzeige.flackernAnzeige()
         TextLauf.laufenderText(Tastatur.textCounter)
         Menue.set_UserTime()
