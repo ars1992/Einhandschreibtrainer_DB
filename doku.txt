@@ -42,6 +42,7 @@ fehlermeldungen in php ausschalten || steht im buch sicherheit
 speichern im auge behalten || manchmal geht es und manchmal nicht 
 - anscheinend muss ich die json datei einmal aktualisiren 
 - in js mit location.reload(pfad) scheint es zu funktioniren
+- beim ersten server start nicht erst nach aktualisiren der json datei 
 
 Auswertung.allesZurückSetzen inhalt nötig mit location reload
 - funktionirt nur mit location.reload

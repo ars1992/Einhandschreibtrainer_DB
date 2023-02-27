@@ -5,9 +5,6 @@ const cookieSetzen = {
     cookieName: function () {
         this.button.addEventListener("click", () => {
             let user = document.querySelector(".login_email").value
-            console.log(user, "hallo")
-
-            console.log("user=" + user)
             document.cookie = "user=" + user
         })
     }

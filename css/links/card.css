@@ -1,5 +1,7 @@
 body{
     background-color: rgb(41, 41, 41);
+    display: grid;
+    /* grid-template-rows: 5vh 76vh 5vh; */
 }
 
 * {
@@ -11,8 +13,8 @@ body{
     grid-template-columns: repeat(10, 10%);
     grid-template-rows: repeat(6, auto);
     width: 100%;
-    /* height: 100%; */
-    margin-top: 5vw;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -182,5 +184,6 @@ body{
     color: rgb(41, 41, 41);
     /* border-radius: 0 0 0 5vw; */
     border-bottom: 0.1vw whitesmoke solid;
+    margin-bottom: 3vw;
 }
 

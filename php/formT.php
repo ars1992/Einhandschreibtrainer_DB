@@ -145,6 +145,11 @@ $body = '
         </div>
       </div>
     </div>
+    <footer class="footer">
+      <div class="footer_div border dis-flex">
+        <p class="myname">ARS92 &#169;</p>
+      </div>
+    </footer>
     <script src="../js/main.js"></script>
   </body>
 </html>';

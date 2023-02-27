@@ -2,7 +2,7 @@
     color: whitesmoke;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
       sans-serif;
-      padding: 0 20vw ;
+      
   }
 
   .headline {
@@ -40,9 +40,18 @@
   }
 
   .footer{
+    background-color: rgb(41, 41, 41);
     color: whitesmoke;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100vw;
-    margin-top: 4vw;
+    /* margin-top: 3vw; */
+    font-size: 2vw;
+  }
+
+  .content{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }

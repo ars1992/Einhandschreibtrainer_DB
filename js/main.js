@@ -211,7 +211,7 @@ const DatenSpeichern = {
             AuswertungBearbeiten.auswertungAusDatenHolen()
             AuswertungBearbeiten.datenAktualisiren()
             DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
-            Auswertung.allesZurückSetzen()
+            // Auswertung.allesZurückSetzen()
             location.reload("../json/newUser.json")
         })
     }
@@ -295,8 +295,6 @@ const Auswertung = {
         StartAnzeige.flackernAnzeige()
         Tastatur.setTextCounter(0)
         Menue.setAnzeigeZeitAnschlagAufNull()
-        // let n = Auswertung.n++
-        // Menue.ausgewählterText = `V${n}.0 Schreibtrainer`
 
         Tastatur.clearTastatur()
         TextLauf.laufenderText(Tastatur.textCounter)
