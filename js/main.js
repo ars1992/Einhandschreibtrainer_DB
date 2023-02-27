@@ -206,6 +206,7 @@ const DatenSpeichern = {
 
     speichern: function () {
         this.speicherButton.addEventListener("click", () => {
+            // location.reload("../json/newUser.json")
             cookieVerwalten.getCookie("user")
             AuswertungBearbeiten.auswertungAusDatenHolen()
             AuswertungBearbeiten.datenAktualisiren()
@@ -322,7 +323,6 @@ const Auswertung = {
     },
 }
 
-//########################################################################
 const StartAnzeige = {
     _startAusgabe: {
         startDiv: document.querySelector(".start"),
@@ -1014,5 +1014,4 @@ const ProgrammStart = {
 }
 
 ProgrammStart.START()
-
 

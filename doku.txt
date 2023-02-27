@@ -30,6 +30,10 @@ evt fehleranzeige mit roter anzeige border text
 
 console.log() entfernen
 
+logout hinzufügen
+
+anmelde page bild neu und mitig und regestriren layout 
+
 fehlermeldungen in php ausschalten || steht im buch sicherheit
 
 //dateien ordnen
