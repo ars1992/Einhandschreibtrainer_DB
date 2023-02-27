@@ -1,0 +1,132 @@
+.auswertung {
+  grid-column: 3/9;
+  grid-row: 1/6;
+  z-index: 1;
+  background-color: $bg;
+  border: 0.1vw $rahmen-farbe solid;
+  color: $schrichft-farbe;
+
+  .auswertung_grid {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 16.666% 16.666% 16.666% 16.666% auto auto;
+    padding: 1vw;
+
+    .auswertung_sub {
+      grid-column: 1/2;
+      grid-row: 1;
+      text-align: left;
+      font-size: 2vw;
+    }
+
+    .auswertung_datum {
+      grid-column: 2/4;
+      grid-row: 1;
+      font-size: 2vw;
+      text-align: right;
+    }
+
+    .auswertung_fehlergesamt {
+      margin: 1vw 0;
+      font-size: 1.5vw;
+      grid-column: 1;
+      grid-row: 2;
+      text-align: left;
+    }
+
+    .auswertung_fehlerProzent {
+      margin: 1vw 0;
+      font-size: 1.5vw;
+      grid-column: 2;
+      grid-row: 2;
+      text-align: center;
+    }
+
+    .auswertung_anschlaege {
+      font-size: 1.5vw;
+      margin: 1vw 0;
+      grid-column: 3;
+      grid-row: 2;
+      text-align: right;
+    }
+
+    .auswertung_table {
+      font-size: 2vw;
+      grid-column: 1/4;
+      grid-row: 3;
+      text-align: left;
+    }
+
+    .auswertung_resetButton {
+      font-size: 2vw;
+      height: 3vw;
+      grid-column: 2/4;
+      grid-row: 7;
+      cursor: pointer;
+      border: none;
+      background-color: $bg;
+      border-bottom: 0.1vw $rahmen-farbe solid;
+      border-left: 0.1vw $rahmen-farbe solid;
+      color: $schrichft-farbe;
+    }
+
+    .auswertung_speichern {
+      font-size: 2vw;
+      height: 3vw;
+      grid-column: 1/2;
+      grid-row: 7;
+      cursor: pointer;
+      border: none;
+      background-color: $bg;
+      border-bottom: 0.1vw $rahmen-farbe solid;
+      border-left: 0.1vw $rahmen-farbe solid;
+      color: $schrichft-farbe;
+    }
+
+    .auswertung_gesamt {
+      grid-column: 4/6;
+      grid-row: 1/8;
+      margin-left: 1vw;
+      border-left: 0.1vw $rahmen-farbe solid;
+
+      .auswertung_gesamtergebnis {
+        overflow: auto;
+        height: 26vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        .auswertung_beschreibung {
+          width: 6vw;
+          text-align: center;
+          font-size: 1.5vw;
+        }
+
+        .auswertung_divBody {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: column;
+
+          .template_div{
+            width: 20vw;
+            border-bottom: 0.1vw $rahmen-farbe solid;
+            margin-top: 1vw;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-around;
+          }
+        }
+      }
+    }
+  }
+}
+
+.auswertung_none {
+  display: none;
+}
+
+.auswertung_notNone {
+  display: grid;
+}

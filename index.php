@@ -92,7 +92,7 @@
                     </p>
                     <p class="text_paragraph mt-3">
                         Ich bin stolz darauf, Ihnen ein Übungsprogramm anbieten zu können,
-                        das nicht nur effektiv ist, sondern auch Spaß macht. ich hoffe, dass
+                        das nicht nur effektiv ist, sondern auch Spaß macht. Ich hoffe, dass
                         Sie mit meinem Programm Ihre Fähigkeiten auf der 5 Finger Tastatur
                         verbessern und Ihre Schreibgeschwindigkeit steigern können.
                     </p>

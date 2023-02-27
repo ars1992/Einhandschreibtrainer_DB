@@ -1,0 +1,8 @@
+.card{
+    display: grid;
+    grid-template-columns: repeat(10, 10%);
+    grid-template-rows: repeat(6, auto);
+    width: 100%;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+}

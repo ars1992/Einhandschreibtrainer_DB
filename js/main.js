@@ -288,22 +288,22 @@ const Auswertung = {
     },
 
     allesZurückSetzen: () => {
-        Auswertung.auswertungAnzeigen.classList.remove("auswertung_notNone")
-        Auswertung.auswertungAnzeigen.classList.add("auswertung_none")
+        // Auswertung.auswertungAnzeigen.classList.remove("auswertung_notNone")
+        // Auswertung.auswertungAnzeigen.classList.add("auswertung_none")
 
-        StartAnzeige._startAusgabe.startDiv.classList.remove("auswertung_none")
-        StartAnzeige.flackernAnzeige()
-        Tastatur.setTextCounter(0)
-        Menue.setAnzeigeZeitAnschlagAufNull()
+        // StartAnzeige._startAusgabe.startDiv.classList.remove("auswertung_none")
+        // StartAnzeige.flackernAnzeige()
+        // Tastatur.setTextCounter(0)
+        // Menue.setAnzeigeZeitAnschlagAufNull()
 
-        Tastatur.clearTastatur()
-        TextLauf.laufenderText(Tastatur.textCounter)
+        // Tastatur.clearTastatur()
+        // TextLauf.laufenderText(Tastatur.textCounter)
 
-        fehlerVerarbeitung.setFehlerZurückSetzen()
+        // fehlerVerarbeitung.setFehlerZurückSetzen()
 
-        ProgrammStart.gestartet = false
-        Auswertung.inAuswertung = false
-        // location.reload()
+        // ProgrammStart.gestartet = false
+        // Auswertung.inAuswertung = false
+        location.reload()
     },
 
     erstellenGesamtAuswertung: () => {

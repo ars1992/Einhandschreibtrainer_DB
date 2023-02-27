@@ -1,0 +1,16 @@
+$bg: #292929;
+$bg-aktive-taste: green;
+$bg-shift-taste: #38fb38;
+$schrichft-farbe: whitesmoke;
+$rahmen-farbe: whitesmoke;
+$rahmen-farbe-b: blue;
+$rahmen-farbe-g: yellow;
+$rahmen-farbe-r: red;
+$rahmen-farbe-db: darkblue;
+$aktueller-buchstabe-farbe: green;
+
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: $bg;
+    box-sizing: border-box;
+}

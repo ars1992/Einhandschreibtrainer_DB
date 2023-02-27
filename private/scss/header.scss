@@ -1,0 +1,31 @@
+
+.header {
+  background-color: $bg;
+  color: $schrichft-farbe;
+
+  .border {
+    border-bottom: 0.1vw $rahmen-farbe solid;
+    border-top: 0.1vw $rahmen-farbe solid;
+  }
+
+  .dis-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 5vw;
+
+    .username {
+      font-size: 1vw;
+    }
+
+    .headline {
+      font-size: 3vw;
+    }
+
+    .headermenue{
+        font-size: 1vw;
+        justify-content: right;
+      }
+  }
+}

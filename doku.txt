@@ -19,6 +19,7 @@ groß W im textlauf. vlt aktueller buchstabe width auto ?
 location.reload() ggf ersetzen mit WebSocket
 
 css tastatur in sass less keine ahnung !! erst wenn alles fertig ist
+-erledigt überschreibt nicht so wie in css gewohnt bei rechts alles !importent
 
 Benutzerhandbuch über info button || im header mit anmeldename un menü 
 
@@ -43,6 +44,7 @@ speichern im auge behalten || manchmal geht es und manchmal nicht
 - anscheinend muss ich die json datei einmal aktualisiren 
 - in js mit location.reload(pfad) scheint es zu funktioniren
 - beim ersten server start nicht erst nach aktualisiren der json datei 
+- doppelte anzeige der Gesamtauswertung wenn man so auf stop clickt wird einfach zu altem hinzugefügt || mit reload behoben
 
 Auswertung.allesZurückSetzen inhalt nötig mit location reload
 - funktionirt nur mit location.reload

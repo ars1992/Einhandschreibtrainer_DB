@@ -1,0 +1,102 @@
+.menue{
+    grid-column: 3/4;
+    grid-row: 1/6;
+
+    .menue_startButton{
+        border-left: none !important;
+        border-right: 0.1vw $rahmen-farbe solid !important;
+    }
+    
+    .menue_textAuswahl{
+        border-left: none !important;
+        border-right: 0.1vw $rahmen-farbe solid !important;
+    }
+
+    .menue_zeitAuswahl{
+        border-left: none !important;
+        border-right: 0.1vw $rahmen-farbe solid !important;
+    }
+    
+    .menue_startButton:hover,
+    .menue_zeitAuswahl:hover,
+    .menue_textAuswahl:hover{
+        border: none !important;
+        border-top: 0.1vw $rahmen-farbe solid !important;
+        border-left: 0.1vw $rahmen-farbe solid !important;
+    }
+}
+
+.tasta{
+    grid-column: 4/9 !important;
+    grid-row: 2/6 !important;
+
+    .taste{
+        border-right: none !important;
+        border-left: 0.1vw $rahmen-farbe solid !important;
+    }
+    
+    .tasta_taste-1{
+        grid-column: 2 !important;
+    }
+    
+    .tasta_taste-blau{
+        grid-column: 2 !important;
+        border-color: $rahmen-farbe-b !important;
+    }
+    
+    .tasta_taste-2{
+        grid-column: 4 !important;
+    }
+    
+    .tasta_taste-4{
+        grid-column: 8 !important;
+    }
+    
+    .tasta_taste-5{
+        grid-column: 10 !important;
+    }
+    
+    .tasta_taste-gelb{
+        grid-column: 4 !important;
+        border-color: $rahmen-farbe-g !important;
+    }
+    
+    .tasta_taste-rot{
+        border-color: $rahmen-farbe-r !important;
+    }
+    
+    .tasta_taste-9{
+        border-color: $rahmen-farbe-db !important;
+    }
+    
+    .tasta_taste-10{
+        grid-column: 8;
+        border-color: $rahmen-farbe-db !important;
+    }
+    
+    .shift{
+        border: none !important;
+    }
+    
+    .green{
+        border: none !important;
+    } 
+    
+}
+
+.text {
+    grid-column: 4/9 !important;
+
+    .text_lauf-f{
+        grid-column: 1/11 !important;
+        text-align: right !important;
+    }
+    
+    .text_lauf-m{
+        grid-column: 11 !important;
+    }
+    
+    .text_lauf-a{
+        grid-column: 12/23 !important;
+    }
+}

@@ -1,0 +1,51 @@
+.text {
+    grid-column: 3/8;
+    grid-row: 1;
+    border-top: 0.1vw $rahmen-farbe solid;
+
+    .text_grid{
+        display: grid;
+        grid-template-columns: repeat(22, 4.54545454%);
+        grid-template-rows: repeat(2, auto);
+
+        .text_lauf{
+            grid-row: 1;
+            grid-column: 1/23;
+            margin-top: 1vw;
+            font-size: 3vw;
+            text-align: center;
+            font-size: 3vw;
+            margin-top: 1vw;
+        }
+
+        .text_lauf-f{
+            grid-column: 1/12;
+            text-align: right;
+            border: none;
+            background-color: $bg;
+        }
+
+        .text_lauf-a{
+            grid-column: 13/23;
+            text-align: left;
+            border: none;
+            background-color: $bg;
+        }
+
+        .text_lauf-a:focus-visible,
+        .text_lauf-f:focus-visible{
+            outline: none;
+        }
+
+        .text_lauf-m{
+            grid-column: 12;
+            text-align: center;
+            color: $aktueller-buchstabe-farbe;
+        }
+
+        ::placeholder{
+            color: $schrichft-farbe;
+            opacity: 1;
+        }
+    }
+}
