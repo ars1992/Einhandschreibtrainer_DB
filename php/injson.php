@@ -1,7 +1,7 @@
 
 <?php
 ini_set("error_reporting", 1);
-// header("Content-Type: text/xml");
+// header("Refresh: 1");
 $list = $_REQUEST["list"];
 $user = $_REQUEST["user"];
 
@@ -18,7 +18,4 @@ for ($i = 0; $i < count($json_decoded->users); $i++) {
         break;
     }
 }
-
-
-
 ?>

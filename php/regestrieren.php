@@ -97,8 +97,7 @@ function istUserLoginOk($json_decoded, $email, $passwort1)
         }
         // mit requerd in html sollte diese bedingung nicht möglich sein.
         if ($email == "" || count_chars($passwort1) == 0) {
-            echo "Bitte Namen und Passwort eingeben";
-            return;
+            return false;
         }
     }
     return true;

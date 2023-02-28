@@ -42,6 +42,9 @@ const fehlerVerarbeitung = {
     ],
 
     istRichtigeReihenfolge: function (list) {
+        if (!list) {
+            return false
+        }
         for (let i = 1; i < list.length; i++) {
             if (list[i - 1][1] < list[i][1]) {
                 return false
@@ -51,6 +54,9 @@ const fehlerVerarbeitung = {
     },
 
     getfehlerAuswertung: function (list) {
+        if (!list) {
+            return false
+        }
         while (!this.istRichtigeReihenfolge(list)) {
             for (let i = 1; i < list.length; i++) {
                 if (list[i - 1][1] < list[i][1]) {
@@ -117,9 +123,9 @@ const DatenAnJsonSenden = {
     _auswertungsDaten: null,
 
     send: function () {
-        let xml = new XMLHttpRequest
+        let xml = new XMLHttpRequest()
         if (this._auswertungsDaten !== null) {
-            xml.open("GET", "injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
+            xml.open("PUT", "injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
             xml.send()
         } else {
             console.log("keine Daten vorhanden")
@@ -138,7 +144,7 @@ const AuswertungHolen = {
     _data: null,
 
     holen: function () {
-        let xml = new XMLHttpRequest
+        let xml = new XMLHttpRequest()
         xml.onreadystatechange = function () {
             if (xml.readyState === 4 && xml.status === 200) {
                 AuswertungHolen._data = xml.responseText
@@ -146,6 +152,7 @@ const AuswertungHolen = {
         }
         xml.open("GET", "../json/newUser.json", false)
         xml.send()
+
     },
 
     getData: function () {
@@ -168,21 +175,25 @@ const AuswertungBearbeiten = {
     },
 
     datenAktualisiren: function () {
-        for (const zeichen of fehlerVerarbeitung._list.slice(0, 70)) {
-            for (const zeichenUserDaten of this._userDaten) {
-                if (zeichen[0] === zeichenUserDaten[0]) {
-                    zeichenUserDaten[1] += zeichen[1]
-                    zeichenUserDaten[2] += zeichen[2]
-                    // console.log(zeichenUserDaten, zeichen)
+
+        if (this._userDaten) {
+            for (const zeichen of fehlerVerarbeitung._list.slice(0, 70)) {
+                for (const zeichenUserDaten of this._userDaten) {
+                    if (zeichen[0] === zeichenUserDaten[0]) {
+                        zeichenUserDaten[1] += zeichen[1]
+                        zeichenUserDaten[2] += zeichen[2]
+                    }
                 }
             }
         }
     },
 
-    
-    getUserDaten: function() {
+
+    getUserDaten: function () {
         this.auswertungAusDatenHolen()
-        return fehlerVerarbeitung.getfehlerAuswertung(this._userDaten)
+        if (this._userDaten) {
+            return fehlerVerarbeitung.getfehlerAuswertung(this._userDaten)
+        }
     },
 }
 
@@ -199,6 +210,10 @@ const cookieVerwalten = {
             }
         }
     },
+
+    cookieLöschen: function (cookieName) {
+        document.cookie = cookieName + "=" + "; path=/files/Schreibtrainer_v1.0" + "; expires=Sun, 05 Jan 1992 23:00:00 UTC"
+    }
 }
 
 const DatenSpeichern = {
@@ -206,13 +221,16 @@ const DatenSpeichern = {
 
     speichern: function () {
         this.speicherButton.addEventListener("click", () => {
-            // location.reload("../json/newUser.json")
+            location.reload()
+            // alert("anfang speichern unter reload")
+            // AuswertungHolen.getData()
             cookieVerwalten.getCookie("user")
             AuswertungBearbeiten.auswertungAusDatenHolen()
             AuswertungBearbeiten.datenAktualisiren()
             DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
-            // Auswertung.allesZurückSetzen()
-            location.reload("../json/newUser.json")
+            Auswertung.allesZurückSetzen()
+            alert("nach zurücksetzen")
+            // location.reload("../json/newUser.json")
         })
     }
 }
@@ -243,8 +261,8 @@ const Auswertung = {
     ausgabePlatz_4_Von: document.querySelector(".platz4_von"),
     ausgabePlatz_5_Von: document.querySelector(".platz5_von"),
 
-
     inAuswertung: false,
+
 
     autoAuswertung: () => {
         Auswertung.erstellenGesamtAuswertung()
@@ -282,7 +300,7 @@ const Auswertung = {
         Auswertung.ausgabePlatz_5_Von.innerText = listeTopFünfFehler[4][2]
     },
 
-    
+
     auswertungReset: () => {
         Auswertung.resetButton.addEventListener("click", Auswertung.allesZurückSetzen)
     },
@@ -304,20 +322,24 @@ const Auswertung = {
         // ProgrammStart.gestartet = false
         // Auswertung.inAuswertung = false
         location.reload()
+        // history.go()
     },
 
     erstellenGesamtAuswertung: () => {
         let ausgabeTemplate = document.querySelector(".auswertung_template")
         let td = ausgabeTemplate.content.querySelectorAll("p")
-        AuswertungBearbeiten.getUserDaten().forEach(function (dataRow) {
-            td[0].textContent = dataRow[0]
-            td[1].textContent = dataRow[1]
-            td[2].textContent = dataRow[2]
+        if (AuswertungBearbeiten.getUserDaten()) {
 
-            let tb = document.querySelector(".auswertung_divBody")
-            let clone = document.importNode(ausgabeTemplate.content, true)
-            tb.appendChild(clone)
-        })
+            AuswertungBearbeiten.getUserDaten().forEach(function (dataRow) {
+                td[0].textContent = dataRow[0]
+                td[1].textContent = dataRow[1]
+                td[2].textContent = dataRow[2]
+
+                let tb = document.querySelector(".auswertung_divBody")
+                let clone = document.importNode(ausgabeTemplate.content, true)
+                tb.appendChild(clone)
+            })
+        }
     },
 }
 
@@ -383,9 +405,18 @@ const JsonTextlader = {
 
 const Header = {
     usernameSpan: document.querySelector(".username_span"),
-    
-    setUsername: function(){
+    userLogoutLink: document.querySelector(".username_logout"),
+
+    setUsername: function () {
         this.usernameSpan.innerText = cookieVerwalten.getCookie("user")
+    },
+
+    logoutUser: function () {
+        this.userLogoutLink.addEventListener("click", (ev) => {
+            ev.preventDefault()
+            cookieVerwalten.cookieLöschen("user")
+            location.replace("../index.php")
+        })
     }
 }
 
@@ -955,6 +986,7 @@ const ProgrammStart = {
     gestartet: false,
 
     immer: () => {
+        Header.logoutUser()
         Header.setUsername()
         StartAnzeige.flackernAnzeige()
         TextLauf.laufenderText(Tastatur.textCounter)

@@ -15,7 +15,8 @@ $body =
     <div class="username dis-flex">
       <div>
         <h2 class="username_sub">Sie sind eingeloggt :</h2>
-        <span class="username_span">alessandro@salomon.gmx.de</span>
+        <span class="username_span">alessandro@salomon.gmx.de</span><br>
+        <a class="username_logout" href="../index.php">logout</a>
       </div>
     </div>
     <div class="headline dis-flex">
@@ -193,7 +194,8 @@ $fehler = '
   </body>
 </html>';
 
-if (!$email or !$passwort) {
+
+if ( ! isset($_COOKIE["user"])) {
   echo $fehler;
   return;
 } else {
