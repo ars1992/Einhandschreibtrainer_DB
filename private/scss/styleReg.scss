@@ -1,0 +1,18 @@
+@import "reset.css";
+@import "body.scss";
+@import "header.scss";
+@import "footer.scss";
+
+.content{
+    color: $schrichft-farbe;
+    margin-top: 10vw;
+    
+    .anzeige{
+        text-align: center;
+        font-size: 4vw;
+
+        .anzeige_sub{
+            margin-bottom: 10vw;
+        }
+    }
+}

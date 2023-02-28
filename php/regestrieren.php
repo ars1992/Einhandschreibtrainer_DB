@@ -1,5 +1,5 @@
 <?php
-
+ini_set("error_reporting", 1);
 $email = htmlentities($_POST["email"]);
 $passwort1 = htmlentities($_POST["passwort1"]);
 $passwort2 = htmlentities($_POST["passwort2"]);
@@ -36,38 +36,124 @@ $auswertung = '[
 ["9", 0, 0]
 ]';
 
+$header = '
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/styleReg.css">
+    <title>Regestriert</title>
+  </head>
+  <body>
+    <header class="header">
+     <div class="dis-flex border">
+      <div class="headline dis-flex">
+        <h1 class="headline_main">Einhandschreibtrainer</h1>
+      </div>
+     </div> 
+    </header>';
 
-function istUserLoginOk($json_decoded, $email)
+$mainFP = '
+<main class="content">
+<div class="anzeige">
+  <h2 class="anzeige_sub">Passwörter stimmen nicht überein.</h2>
+  <a href="../index.php" class="anzeige_link">Zurück</a>
+</div>
+</main>';
+
+$mainUV = '
+<main class="content">
+<div class="anzeige">
+  <h2 class="anzeige_sub">Nutzer bereits vergeben.</h2>
+  <a href="../index.php" class="anzeige_link">Zurück</a>
+</div>
+</main>';
+
+$mainOK = '
+<main class="content">
+<div class="anzeige">
+  <h2 class="anzeige_sub">Ihr Benutzer wurde angelegt.</h2>
+  <a href="../index.php" class="anzeige_link">Zurück</a>
+</div>
+</main>';
+
+$footer = '
+  <footer class="footer">
+   <div class="footer_div border dis-flex">
+    <p class="myname">ARS92 &#169;</p>
+   </div>
+  </footer>
+ </body>
+</html>';
+
+
+function istUserLoginOk($json_decoded, $email, $passwort1)
 {
     foreach ($json_decoded->users as $name => $wert) {
         if ($wert->email == $email) {
-            echo "Nutzer bereits vergeben <br>";
             return false;
+        }
+        // mit requerd in html sollte diese bedingung nicht möglich sein.
+        if ($email == "" || count_chars($passwort1) == 0) {
+            echo "Bitte Namen und Passwort eingeben";
+            return;
         }
     }
     return true;
 };
 
-function neuenUserAnlegen($email, $hand, $filename, $json_decoded, $passwort1, $passwort2, $auswertung)
-{
+function neuenUserAnlegen(
+    $email,
+    $hand,
+    $filename,
+    $json_decoded,
+    $passwort1,
+    $passwort2,
+    $auswertung,
+    $header,
+    $footer,
+    $mainFP,
+    $mainUV,
+    $mainOK
+) {
     $anzahlUser = count($json_decoded->users);
-    echo $anzahlUser. "<br>";
-    if (istUserLoginOk($json_decoded, $email) && hashPasswort($passwort1, $passwort2) != -1) {
+    echo $header;
+    if (istUserLoginOk($json_decoded, $email, $passwort1) && hashPasswort($passwort1, $passwort2) != -1) {
         $hashPaswd = hashPasswort($passwort1, $passwort2);
-        $json_decoded->users[$anzahlUser] = array("email"=> $email, "passwort"=> $hashPaswd, "hand"=> $hand, "auswertung"=> $auswertung);
+        $json_decoded->users[$anzahlUser] = array("email" => $email, "passwort" => $hashPaswd, "hand" => $hand, "auswertung" => $auswertung);
         $json_encoded = json_encode($json_decoded);
         file_put_contents($filename, $json_encoded);
-        echo "Ihr Benutzer wurde angelegt";
+        echo $mainOK;
+    } else if (!istUserLoginOk($json_decoded, $email, $passwort1)) {
+        echo $mainUV;
+    } else {
+        echo $mainFP;
     }
+    echo $footer;
 }
 
-function hashPasswort($passwort1, $passwort2){
-    if($passwort1 == $passwort2){
+function hashPasswort($passwort1, $passwort2)
+{
+    if ($passwort1 == $passwort2) {
         return password_hash($passwort1, PASSWORD_DEFAULT);
     } else {
-        echo "Paswörter stimmen nicht überein. <br>";
         return -1;
     }
 }
 
-neuenUserAnlegen($email, $hand, $filename, $json_decoded, $passwort1, $passwort2, $auswertung);
+neuenUserAnlegen(
+    $email, 
+    $hand, 
+    $filename, 
+    $json_decoded, 
+    $passwort1, 
+    $passwort2, 
+    $auswertung, 
+    $header, 
+    $footer, 
+    $mainFP, 
+    $mainUV, 
+    $mainOK
+);

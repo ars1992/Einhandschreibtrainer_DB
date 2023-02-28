@@ -1,4 +1,5 @@
 <?php
+ini_set("error_reporting", 1);
 $email = htmlentities($_POST["email"]);
 $passwort = htmlentities($_POST["passwort"]);
 
@@ -158,19 +159,48 @@ $body =
 </body>
 </html>';
 
+$fehler = '
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/styleReg.css" />
+    <title>Fehler</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="border dis-flex">
+        <div class="headline dis-flex">
+          <h1 class="headline_main">Einhandschreibtrainer</h1>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="anzeige">
+        <h2 class="anzeige_sub">Passwort oder Email nicht bekannt.</h2>
+        <a href="../index.php" class="anzeige_link">Zurück</a>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer_div border dis-flex">
+        <p class="myname">ARS92 &#169;</p>
+      </div>
+    </footer>
+  </body>
+</html>';
+
 if (!$email or !$passwort) {
-  echo "<h1> 404 </h1>";
+  echo $fehler;
   return;
 } else {
-  istUserLoginOk($json_decoded, $email, $passwort, $body);
+  istUserLoginOk($json_decoded, $email, $passwort, $body, $fehler);
 }
 
-
-
-// ziel seite hier einfügen ??
-// login umgehen ist im momment möglich
-// http://localhost/files/testLogin/Tastatur/rechts/tastaRechts.html
-function istUserLoginOk($json_decoded, $email, $passwort, $body)
+function istUserLoginOk($json_decoded, $email, $passwort, $body, $fehler)
 {
   foreach ($json_decoded->users as $name => $wert) {
     if ($wert->email == $email  && password_verify($passwort, $wert->passwort)) {
@@ -199,7 +229,7 @@ function istUserLoginOk($json_decoded, $email, $passwort, $body)
       return;
     }
   }
-  echo "Passwort oder Email nicht bekannt";
+  echo $fehler;
 };
 
 ?>

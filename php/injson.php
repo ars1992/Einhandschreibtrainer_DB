@@ -1,5 +1,6 @@
 
 <?php
+ini_set("error_reporting", 1);
 // header("Content-Type: text/xml");
 $list = $_REQUEST["list"];
 $user = $_REQUEST["user"];

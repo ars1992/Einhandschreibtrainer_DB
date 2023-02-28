@@ -26,13 +26,13 @@
                 <div class="login p-2">
                     <form action="php/formT.php" class="login_form row row row-cols-lg-auto " method="POST">
                         <div class="py-2">
-                            <input type="email" class="login_email form-control" name="email" placeholder="Email" />
+                            <input type="email" class="login_email form-control rounded-0" name="email" placeholder="Email" required/>
                         </div>
                         <div class="py-2">
-                            <input type="password" class="login_passwort form-control" name="passwort" placeholder="Passwort" />
+                            <input type="password" class="login_passwort form-control rounded-0" name="passwort" placeholder="Passwort" required/>
                         </div>
                         <div class="py-2">
-                            <input type="submit" class="login_submit btn btn-outline-light" name="submit" value="Login" />
+                            <input type="submit" class="login_submit btn btn-outline-light rounded-0" name="submit" value="Login" />
                         </div>
                     </form>
                 </div>
@@ -49,27 +49,27 @@
             <hr />
             <div class="row">
                 <div class="regestrieren col-4">
-                    <form action="php/regestrieren.php" class="regestrieren_form " method="POST">
+                    <form action="php/regestrieren.php" class="regestrieren_form needs-validation" method="POST">
                         <h2 class="regestrieren_sub">Regestrieren</h2>
                         <label for="email" class="regestrieren_label form-label">Email</label>
                         <br />
-                        <input type="email" class="regestrieren_email form-control" name="email" />
+                        <input type="email" class="regestrieren_email form-control rounded-0" name="email" required/>
                         <br />
                         <label for="password" class="regestrieren_label form-label">Passwort</label>
                         <br />
-                        <input type="password" class="regestrieren_passwort1 form-control" name="passwort1" />
+                        <input type="password" class="regestrieren_passwort1 form-control rounded-0" name="passwort1" required/>
                         <br />
                         <label for="password2" class="regestrieren_label form-label">Passwort wiederholen</label>
                         <br />
-                        <input type="password" class="regestrieren_passwort2 form-control" name="passwort2" />
+                        <input type="password" class="regestrieren_passwort2 form-control rounded-0" name="passwort2" required/>
                         <br />
                         <label for="Hand" class="regestrieren_hand form-label">Mit welcher Hand schreiben Sie</label>
                         <br />
-                        <input type="radio" name="hand" value="rechts" checked class="regestrieren_handRechts" />
+                        <input type="radio" name="hand" value="rechts" checked class="regestrieren_handRechts ms-1" />
                         <label for="Rechts" class="form-label">Rechts</label>
-                        <input type="radio" name="hand" value="links" class="regestrieren_handLinks" />
+                        <input type="radio" name="hand" value="links" class="regestrieren_handLinks ms-5" />
                         <label for="Links" class="form-label">Links</label>
-                        <input type="submit" class="regestrieren_submit btn btn-outline-light" name="submit" value="Regestrieren" />
+                        <input type="submit" class="regestrieren_submit btn btn-outline-light rounded-0 ms-5" name="submit" value="Regestrieren" />
                     </form>
                 </div>
                 <div class="text col-8">
