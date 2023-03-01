@@ -45,6 +45,7 @@ speichern im auge behalten || manchmal geht es und manchmal nicht
 - richtige daten werden an php gesendet
 - newUser.json scheint beim start nicht geladen zu sein
 - wird teilweise aus dem cache bereitgestellt 
+- mit zwichen methode beim holen der daten sollte es nicht mehr aus dem cashe geholt werden
 
 Auswertung.allesZurückSetzen inhalt nötig mit location reload
 - funktionirt nur mit location.reload

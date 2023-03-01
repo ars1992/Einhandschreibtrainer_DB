@@ -1,7 +1,6 @@
 
 <?php
 ini_set("error_reporting", 1);
-// header("Refresh: 1");
 $list = $_REQUEST["list"];
 $user = $_REQUEST["user"];
 

@@ -123,14 +123,19 @@ const DatenAnJsonSenden = {
     _auswertungsDaten: null,
 
     send: function () {
-        let xml = new XMLHttpRequest()
+        let xhr = new XMLHttpRequest()
         if (this._auswertungsDaten !== null) {
-            xml.open("PUT", "injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
-            xml.send()
+            xhr.open("PUT", "injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
+            xhr.send()
         } else {
             console.log("keine Daten vorhanden")
         }
     },
+
+    // sendFetch: function() {
+    //     fetch("injson.php", { method: "PUT", body: "list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user")})
+    // }, 
+    // funktionirt nicht 
 
     setAuswertungsDaten: function (list) {
         this._auswertungsDaten = JSON.stringify(list)
@@ -144,20 +149,36 @@ const AuswertungHolen = {
     _data: null,
 
     holen: function () {
-        let xml = new XMLHttpRequest()
-        xml.onreadystatechange = function () {
-            if (xml.readyState === 4 && xml.status === 200) {
-                AuswertungHolen._data = xml.responseText
+        let xhr = new XMLHttpRequest()
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                AuswertungHolen._data = xhr.responseText
             }
         }
-        xml.open("GET", "../json/newUser.json", false)
-        xml.send()
-
+        xhr.open("GET", "../json/newUser.json", false)
+        xhr.setRequestHeader("cache", "no-store")
+        xhr.setRequestHeader("Cache-Control", "no-cache, no-store, max-age=0")
+        xhr.send()
     },
 
+    // holenFetch: async function () {
+    //     let response = await fetch("../json/newUser.json")
+    //     let jsonDaten = await response.json()
+    //     AuswertungHolen._data = await jsonDaten
+    //     console.log(this._data, response)
+    //     return jsonDaten
+    // },
+
     getData: function () {
+        // await this.holenFetch()
+        // console.log(await this.holenFetch())
+
+        // console.log(this._data)
+        // return this._data
+
         this.holen()
         return JSON.parse(this._data)
+        // return this._data
     }
 }
 
@@ -175,7 +196,6 @@ const AuswertungBearbeiten = {
     },
 
     datenAktualisiren: function () {
-
         if (this._userDaten) {
             for (const zeichen of fehlerVerarbeitung._list.slice(0, 70)) {
                 for (const zeichenUserDaten of this._userDaten) {
@@ -221,7 +241,7 @@ const DatenSpeichern = {
 
     speichern: function () {
         this.speicherButton.addEventListener("click", () => {
-            location.reload()
+            // location.reload()
             // alert("anfang speichern unter reload")
             // AuswertungHolen.getData()
             cookieVerwalten.getCookie("user")
@@ -229,7 +249,7 @@ const DatenSpeichern = {
             AuswertungBearbeiten.datenAktualisiren()
             DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
             Auswertung.allesZurückSetzen()
-            alert("nach zurücksetzen")
+            // alert("nach zurücksetzen")
             // location.reload("../json/newUser.json")
         })
     }
@@ -370,23 +390,23 @@ const JsonTextlader = {
     data: null,
 
     _getJsonDatei: () => {
-        let xml = null
+        let xhr = null
         if (window.XMLHttpRequest) {
-            xml = new XMLHttpRequest()
+            xhr = new XMLHttpRequest()
         }
 
-        if (xml === null) {
+        if (xhr === null) {
             console.log("Fehler")
         }
 
-        xml.onreadystatechange = function () {
-            if (xml.readyState === 4 && xml.status === 200) {
-                JsonTextlader.data = xml.responseText
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                JsonTextlader.data = xhr.responseText
             }
         }
 
-        xml.open("GET", JsonTextlader.jsonDateiName, false)
-        xml.send()
+        xhr.open("GET", JsonTextlader.jsonDateiName, false)
+        xhr.send()
     },
 
 
@@ -1044,4 +1064,3 @@ const ProgrammStart = {
 }
 
 ProgrammStart.START()
-
