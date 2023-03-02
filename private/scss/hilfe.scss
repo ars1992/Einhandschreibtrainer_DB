@@ -2,3 +2,9 @@
 @import "body.scss";
 @import "header.scss";
 @import "footer.scss";
+
+.content{
+    color: $schrichft-farbe;
+    text-align: center;
+    font-size: 2rem;
+}

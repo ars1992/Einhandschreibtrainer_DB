@@ -88,6 +88,7 @@
       grid-row: 1/8;
       margin-left: 1vw;
       border-left: 0.1vw $rahmen-farbe solid;
+      padding-left: 1vw;
 
       .auswertung_gesamtergebnis {
         overflow: auto;
@@ -109,7 +110,7 @@
           flex-direction: column;
 
           .template_div{
-            width: 20vw;
+            width: 19vw;
             border-bottom: 0.1vw $rahmen-farbe solid;
             margin-top: 1vw;
             display: flex;
