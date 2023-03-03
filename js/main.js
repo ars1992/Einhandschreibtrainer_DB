@@ -110,8 +110,8 @@ const fehlerVerarbeitung = {
         return zeichenGesamt
     },
 
-    setFehlerZurückSetzen: function () {
-        for (let i = 0; i < this._list.length; i++) {
+    setFehlerZurückSetzen: function (list) {
+        for (let i = 0; i < list.length; i++) {
             this._list[i][1] = 0
             this._list[i][2] = 0
         }
@@ -156,7 +156,7 @@ const AuswertungHolen = {
             }
         }
         xhr.open("GET", "../json/newUser.json", false)
-        xhr.setRequestHeader("cache", "no-store")
+        // xhr.setRequestHeader("cache", "no-store")
         xhr.setRequestHeader("Cache-Control", "no-cache, no-store, max-age=0")
         xhr.send()
     },
@@ -202,6 +202,7 @@ const AuswertungBearbeiten = {
                     if (zeichen[0] === zeichenUserDaten[0]) {
                         zeichenUserDaten[1] += zeichen[1]
                         zeichenUserDaten[2] += zeichen[2]
+                        break
                     }
                 }
             }
@@ -337,7 +338,7 @@ const Auswertung = {
         // Tastatur.clearTastatur()
         // TextLauf.laufenderText(Tastatur.textCounter)
 
-        // fehlerVerarbeitung.setFehlerZurückSetzen()
+        // fehlerVerarbeitung.setFehlerZurückSetzen(fehlerVerarbeitung._list)
 
         // ProgrammStart.gestartet = false
         // Auswertung.inAuswertung = false
@@ -406,6 +407,7 @@ const JsonTextlader = {
         }
 
         xhr.open("GET", JsonTextlader.jsonDateiName, false)
+        xhr.setRequestHeader("Cache-Control", "no-cache, no-store, max-age=0")
         xhr.send()
     },
 

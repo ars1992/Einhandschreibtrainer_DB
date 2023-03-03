@@ -23,7 +23,7 @@ $body =
       <h1 class="headline_main">Einhandschreibtrainer</h1>
     </div>
     <div class="headermenue dis-flex r">
-      <h2 class="headermenue_sub">Hilfe</h2>
+    <a href="../Hilfe/hilfe.html" target="new" class="headermenue_link">Hilfe</a>
     </div>
   </div>
 </header>

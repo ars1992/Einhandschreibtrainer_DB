@@ -23,6 +23,7 @@ Benutzerhandbuch über info button || im header mit anmeldename un menü
 Python zur auswertungsanalyse
 
 kundenhandbuch bei hilfe erstellen || schritt für schritt anleitung
+- mit tailwind 
 
 json zu db
 
