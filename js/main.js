@@ -189,7 +189,7 @@ const AuswertungBearbeiten = {
 
     auswertungAusDatenHolen: function () {
         for (const element of this._data["users"]) {
-            if (element["email"] === cookieVerwalten.getCookie("user")) {
+            if (element["username"] === cookieVerwalten.getCookie("user")) {
                 this._userDaten = JSON.parse(element["auswertung"])
             }
         }

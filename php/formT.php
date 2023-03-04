@@ -1,6 +1,6 @@
 <?php
 ini_set("error_reporting", 1);
-$email = htmlentities($_POST["email"]);
+$username = htmlentities($_POST["username"]);
 $passwort = htmlentities($_POST["passwort"]);
 
 # file holen und bearbeiten
@@ -199,13 +199,13 @@ if ( ! isset($_COOKIE["user"])) {
   echo $fehler;
   return;
 } else {
-  istUserLoginOk($json_decoded, $email, $passwort, $body, $fehler);
+  istUserLoginOk($json_decoded, $username, $passwort, $body, $fehler);
 }
 
-function istUserLoginOk($json_decoded, $email, $passwort, $body, $fehler)
+function istUserLoginOk($json_decoded, $username, $passwort, $body, $fehler)
 {
   foreach ($json_decoded->users as $name => $wert) {
-    if ($wert->email == $email  && password_verify($passwort, $wert->passwort)) {
+    if ($wert->username == $username  && password_verify($passwort, $wert->passwort)) {
       if ($wert->hand == "links") {
         echo '<!DOCTYPE html>
                 <html lang="de">

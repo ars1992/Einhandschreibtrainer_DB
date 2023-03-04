@@ -10,7 +10,7 @@ $json_decoded = json_decode($file);
 
 
 for ($i = 0; $i < count($json_decoded->users); $i++) {
-    if ($json_decoded->users[$i]->email == $user) {
+    if ($json_decoded->users[$i]->username == $user) {
         $json_decoded->users[$i]->auswertung = $list;
         $json_encoded = json_encode($json_decoded);
         file_put_contents($filename, $json_encoded);

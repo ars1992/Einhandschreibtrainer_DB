@@ -4,7 +4,10 @@ Aufgaben
 true und false bei jsonreader verstehen 
 - synchron oder asynchron hatte bei async öfter probleme (speichern, datenAktualisiren php warnungen)
 
-username anstelle von email
+//username anstelle von email
+-erledigt 
+
+statistik löschen
 
 google ads
 
@@ -21,9 +24,6 @@ location.reload() ggf ersetzen mit WebSocket
 Benutzerhandbuch über info button || im header mit anmeldename un menü 
 
 Python zur auswertungsanalyse
-
-kundenhandbuch bei hilfe erstellen || schritt für schritt anleitung
-- mit tailwind 
 
 json zu db
 
@@ -134,3 +134,9 @@ Abgeschlossen
 
 //anmelde page bild neu und mitig und regestriren layout 
 - fertig mit bootstrap
+
+//kundenhandbuch bei hilfe erstellen || schritt für schritt anleitung
+- mit tailwind 
+
+//username anstelle von email
+-erledigt 

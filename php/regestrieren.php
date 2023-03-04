@@ -1,6 +1,7 @@
+
 <?php
 ini_set("error_reporting", 1);
-$email = htmlentities($_POST["email"]);
+$username = htmlentities($_POST["username"]);
 $passwort1 = htmlentities($_POST["passwort1"]);
 $passwort2 = htmlentities($_POST["passwort2"]);
 $hand = $_POST["hand"];
@@ -89,14 +90,14 @@ $footer = '
 </html>';
 
 
-function istUserLoginOk($json_decoded, $email, $passwort1)
+function istUserLoginOk($json_decoded, $username, $passwort1)
 {
     foreach ($json_decoded->users as $name => $wert) {
-        if ($wert->email == $email) {
+        if ($wert->username == $username) {
             return false;
         }
         // mit requerd in html sollte diese bedingung nicht möglich sein.
-        if ($email == "" || count_chars($passwort1) == 0) {
+        if ($username == "" || count_chars($passwort1) == 0) {
             return false;
         }
     }
@@ -104,7 +105,7 @@ function istUserLoginOk($json_decoded, $email, $passwort1)
 };
 
 function neuenUserAnlegen(
-    $email,
+    $username,
     $hand,
     $filename,
     $json_decoded,
@@ -119,13 +120,13 @@ function neuenUserAnlegen(
 ) {
     $anzahlUser = count($json_decoded->users);
     echo $header;
-    if (istUserLoginOk($json_decoded, $email, $passwort1) && hashPasswort($passwort1, $passwort2) != -1) {
+    if (istUserLoginOk($json_decoded, $username, $passwort1) && hashPasswort($passwort1, $passwort2) != -1) {
         $hashPaswd = hashPasswort($passwort1, $passwort2);
-        $json_decoded->users[$anzahlUser] = array("email" => $email, "passwort" => $hashPaswd, "hand" => $hand, "auswertung" => $auswertung);
+        $json_decoded->users[$anzahlUser] = array("username" => $username, "passwort" => $hashPaswd, "hand" => $hand, "auswertung" => $auswertung);
         $json_encoded = json_encode($json_decoded);
         file_put_contents($filename, $json_encoded);
         echo $mainOK;
-    } else if (!istUserLoginOk($json_decoded, $email, $passwort1)) {
+    } else if (!istUserLoginOk($json_decoded, $username, $passwort1)) {
         echo $mainUV;
     } else {
         echo $mainFP;
@@ -143,7 +144,7 @@ function hashPasswort($passwort1, $passwort2)
 }
 
 neuenUserAnlegen(
-    $email, 
+    $username, 
     $hand, 
     $filename, 
     $json_decoded, 
@@ -156,3 +157,5 @@ neuenUserAnlegen(
     $mainUV, 
     $mainOK
 );
+
+?>

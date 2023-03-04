@@ -26,7 +26,7 @@
                 <div class="login p-2">
                     <form action="php/formT.php" class="login_form row row row-cols-lg-auto " method="POST">
                         <div class="py-2">
-                            <input type="email" class="login_email form-control rounded-0" name="email" placeholder="Email" required/>
+                            <input type="text" class="login_email form-control rounded-0" name="username" placeholder="Username" required/>
                         </div>
                         <div class="py-2">
                             <input type="password" class="login_passwort form-control rounded-0" name="passwort" placeholder="Passwort" required/>
@@ -38,8 +38,8 @@
                 </div>
             </div>
             <hr />
-
         </header>
+
         <main class="content">
             <div class="row">
                 <div class="bilder col-12 text-center">
@@ -51,9 +51,9 @@
                 <div class="regestrieren col-4">
                     <form action="php/regestrieren.php" class="regestrieren_form needs-validation" method="POST">
                         <h2 class="regestrieren_sub">Regestrieren</h2>
-                        <label for="email" class="regestrieren_label form-label">Email</label>
+                        <label for="username" class="regestrieren_label form-label">Username</label>
                         <br />
-                        <input type="email" class="regestrieren_email form-control rounded-0" name="email" required/>
+                        <input type="text" class="regestrieren_email form-control rounded-0" name="username" required/>
                         <br />
                         <label for="password" class="regestrieren_label form-label">Passwort</label>
                         <br />
@@ -80,7 +80,7 @@
                     <p class="text_paragraph mt-3">
                         Mein Programm wurde speziell entwickelt, um Ihnen zu helfen, Ihre
                         Tippfähigkeiten auf der Tastatur zu verbessern. Mit den Funktionen
-                        unserer Webanwendung können Sie Ihre Fingerfertigkeit trainieren und
+                        meiner Webanwendung können Sie Ihre Fingerfertigkeit trainieren und
                         Ihre Schreibgeschwindigkeit steigern.
                     </p>
                     <p class="text_paragraph mt-3">
