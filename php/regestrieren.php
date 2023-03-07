@@ -90,6 +90,7 @@ $footer = '
 </html>';
 
 
+// prüft ob eingaben des usernames des Users möglich sind für eine Regestration
 function istUserLoginOk($json_decoded, $username, $passwort1)
 {
     foreach ($json_decoded->users as $name => $wert) {
@@ -104,6 +105,7 @@ function istUserLoginOk($json_decoded, $username, $passwort1)
     return true;
 };
 
+// zeigt an mit ver. seiten ob regesration erfolgreich war oder nicht
 function neuenUserAnlegen(
     $username,
     $hand,
@@ -134,6 +136,7 @@ function neuenUserAnlegen(
     echo $footer;
 }
 
+// hasht das Passwort wen beide eingaben identich sind
 function hashPasswort($passwort1, $passwort2)
 {
     if ($passwort1 == $passwort2) {

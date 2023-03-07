@@ -1,5 +1,7 @@
 
 <?php
+// Schreibt berbeitete Auswertungsdaten von main.js in die JSON Datei
+// Beim Speichern
 ini_set("error_reporting", 1);
 $list = $_REQUEST["list"];
 $user = $_REQUEST["user"];

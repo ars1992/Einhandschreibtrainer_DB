@@ -49,7 +49,7 @@
             <hr />
             <div class="row">
                 <div class="regestrieren col-4">
-                    <form action="php/regestrieren.php" class="regestrieren_form needs-validation" method="POST">
+                    <form action="php/regestrieren.php" class="regestrieren_form --needs-validation--" method="POST">
                         <h2 class="regestrieren_sub">Regestrieren</h2>
                         <label for="username" class="regestrieren_label form-label">Username</label>
                         <br />

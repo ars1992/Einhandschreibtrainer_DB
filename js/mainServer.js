@@ -1,5 +1,6 @@
 "use strict"
-// verwaltet generirte Daten während der Übung
+// Pfade der Dateien unterscheiden sich.
+// Ist in der Server Datei min.js 
 const fehlerVerarbeitung = {
 
     _list: [
@@ -109,7 +110,6 @@ const fehlerVerarbeitung = {
         return zeichenGesamt
     },
 
-    // für spätere funktion zum zurücksetzen der gesamtauswertung
     setFehlerZurückSetzen: function (list) {
         for (let i = 0; i < list.length; i++) {
             this._list[i][1] = 0
@@ -118,7 +118,6 @@ const fehlerVerarbeitung = {
     },
 }
 
-// Sendet die Bearbeitete Daten an PHP injson.php
 const DatenAnJsonSenden = {
 
     _auswertungsDaten: null,
@@ -126,13 +125,13 @@ const DatenAnJsonSenden = {
     send: function () {
         let xhr = new XMLHttpRequest()
         if (this._auswertungsDaten !== null) {
-            // für server pfad ändern
-            xhr.open("PUT", "injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
+            xhr.open("PUT", "../php/injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
             xhr.send()
         } else {
             console.log("keine Daten vorhanden")
         }
     },
+
 
     setAuswertungsDaten: function (list) {
         this._auswertungsDaten = JSON.stringify(list)
@@ -140,7 +139,6 @@ const DatenAnJsonSenden = {
     },
 }
 
-// stellt Auswertungsdaten aus der newUser.json datei bereit
 const AuswertungHolen = {
 
     _data: null,
@@ -153,20 +151,33 @@ const AuswertungHolen = {
             }
         }
         xhr.open("POST", "../json/newUser.json", false)
+        // xhr.setRequestHeader("cache", "no-store")
         xhr.setRequestHeader("Content-type", "application/json")
         xhr.setRequestHeader("Cache-Control", "no-cache, no-store, max-age=0")
         xhr.send()
     },
 
+    // holenFetch: async function () {
+    //     let response = await fetch("../json/newUser.json")
+    //     let jsonDaten = await response.json()
+    //     AuswertungHolen._data = await jsonDaten
+    //     console.log(this._data, response)
+    //     return jsonDaten
+    // },
+
     getData: function () {
+        // await this.holenFetch()
+        // console.log(await this.holenFetch())
+
+        // console.log(this._data)
+        // return this._data
+
         this.holen()
         return JSON.parse(this._data)
+        // return this._data
     }
 }
 
-// bearbeitet auswertungsdaten aus newUser.json um neu generirte Daten
-// aus für die Gesamtauswertung zu aktuallisiren
-// addiert fehler auf
 const AuswertungBearbeiten = {
 
     _data: AuswertungHolen.getData(),
@@ -203,8 +214,6 @@ const AuswertungBearbeiten = {
     },
 }
 
-// stellt das gesetzte cookie beim login bereit
-// löscht es beim abmelden
 const cookieVerwalten = {
 
     getCookie: function (cookieName) {
@@ -218,14 +227,12 @@ const cookieVerwalten = {
             }
         }
     },
-    // für server pfad ändern
+
     cookieLöschen: function (cookieName) {
-        document.cookie = cookieName + "=" + "; path=/files/Schreibtrainer_v1.0" + "; expires=Sun, 05 Jan 1992 23:00:00 UTC"
+        document.cookie = cookieName + "=" + "; path=/files/Einhandschreibtrainer" + "; expires=Sun, 05 Jan 1992 23:00:00 UTC"
     }
 }
 
-// Zum speichern der erzeugten userdaten
-// beim click auf Speichern in der Auswertung
 const DatenSpeichern = {
     speicherButton: document.querySelector(".auswertung_speichern"),
 
@@ -240,7 +247,6 @@ const DatenSpeichern = {
     }
 }
 
-// zeig alle daten des übungsdurchlaufes in der Auswertung an
 const Auswertung = {
 
     auswertungDatum: document.querySelector(".auswertung_datum"),
@@ -312,25 +318,9 @@ const Auswertung = {
     },
 
     allesZurückSetzen: () => {
-        // Auswertung.auswertungAnzeigen.classList.remove("auswertung_notNone")
-        // Auswertung.auswertungAnzeigen.classList.add("auswertung_none")
-
-        // StartAnzeige._startAusgabe.startDiv.classList.remove("auswertung_none")
-        // StartAnzeige.flackernAnzeige()
-        // Tastatur.setTextCounter(0)
-        // Menue.setAnzeigeZeitAnschlagAufNull()
-
-        // Tastatur.clearTastatur()
-        // TextLauf.laufenderText(Tastatur.textCounter)
-
-        // fehlerVerarbeitung.setFehlerZurückSetzen(fehlerVerarbeitung._list)
-
-        // ProgrammStart.gestartet = false
-        // Auswertung.inAuswertung = false
         location.reload()
     },
 
-    // generirt html code aus tamplate und zeigt daten der auswertungsdaten aus newUser.json an
     erstellenGesamtAuswertung: () => {
         let ausgabeTemplate = document.querySelector(".auswertung_template")
         let td = ausgabeTemplate.content.querySelectorAll("p")
@@ -349,7 +339,6 @@ const Auswertung = {
     },
 }
 
-// steuert die anzeige das man mit der Leertaste starten kann
 const StartAnzeige = {
     _startAusgabe: {
         startDiv: document.querySelector(".start"),
@@ -371,7 +360,6 @@ const StartAnzeige = {
     },
 }
 
-// stellt die texte aus texte.json bereit
 const JsonTextlader = {
 
     jsonDateiName: null,
@@ -412,8 +400,6 @@ const JsonTextlader = {
     }
 }
 
-// zeigt eingeloggten user im header an
-// verwaltet den loggout
 const Header = {
     usernameSpan: document.querySelector(".username_span"),
     userLogoutLink: document.querySelector(".username_logout"),
@@ -431,8 +417,6 @@ const Header = {
     }
 }
 
-// alle funktionen die im menü bereich 
-// timer, textauswahl, apm , zeitauswahl
 const Menue = {
 
     menueTextAuswahl: document.querySelector(".menue_textAuswahl"),
@@ -519,7 +503,6 @@ const Menue = {
     }
 }
 
-// generirt die anzeige des zu tippenden textes
 const TextLauf = {
 
     textLaufF: document.querySelector(".text_lauf-f"),
@@ -540,9 +523,6 @@ const TextLauf = {
     }
 }
 
-// enthält alle Tastenkompinationen zur anzeige auf der Vtastatur 
-// methoden zum mitzählen der erfolgten nutzereingaben während der übung
-// methode übung beenden wenn text zu ende
 const Tastatur = {
 
     taste1: document.querySelector(".tasta_taste-1"),
@@ -991,15 +971,12 @@ const Tastatur = {
             Tastatur.textCounter++
         }
     },
-    // mit location.reload zum zurücksetzen nicht mehr nötig
+
     setTextCounter: (n) => {
         Tastatur.textCounter = n
     }
 }
 
-// steuert alle nötigen funktion für den Programmablauf
-// nimmt die tasteneingaben des users engegegen 
-// startet alle eventlistener 
 const ProgrammStart = {
 
     gestartet: false,

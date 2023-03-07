@@ -202,6 +202,7 @@ if ( ! isset($_COOKIE["user"])) {
   istUserLoginOk($json_decoded, $username, $passwort, $body, $fehler);
 }
 
+// Generirt page je nach "hand" in den userdaten
 function istUserLoginOk($json_decoded, $username, $passwort, $body, $fehler)
 {
   foreach ($json_decoded->users as $name => $wert) {

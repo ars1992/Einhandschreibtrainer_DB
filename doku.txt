@@ -4,8 +4,7 @@ Aufgaben
 true und false bei jsonreader verstehen 
 - synchron oder asynchron hatte bei async öfter probleme (speichern, datenAktualisiren php warnungen)
 
-//username anstelle von email
--erledigt 
+
 
 statistik löschen
 
@@ -137,6 +136,9 @@ Abgeschlossen
 
 //kundenhandbuch bei hilfe erstellen || schritt für schritt anleitung
 - mit tailwind 
+
+//username anstelle von email
+-erledigt 
 
 //username anstelle von email
 -erledigt 
