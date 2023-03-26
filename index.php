@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -26,10 +25,10 @@
                 <div class="login p-2">
                     <form action="php/formT.php" class="login_form row row row-cols-lg-auto " method="POST">
                         <div class="py-2">
-                            <input type="text" class="login_email form-control rounded-0" name="username" placeholder="Username" required/>
+                            <input type="text" class="login_email form-control rounded-0" name="username" placeholder="Username" required />
                         </div>
                         <div class="py-2">
-                            <input type="password" class="login_passwort form-control rounded-0" name="passwort" placeholder="Passwort" required/>
+                            <input type="password" class="login_passwort form-control rounded-0" name="passwort" placeholder="Passwort" required />
                         </div>
                         <div class="py-2">
                             <input type="submit" class="login_submit btn btn-outline-light rounded-0" name="submit" value="Login" />
@@ -53,15 +52,15 @@
                         <h2 class="regestrieren_sub">Regestrieren</h2>
                         <label for="username" class="regestrieren_label form-label">Username</label>
                         <br />
-                        <input type="text" class="regestrieren_email form-control rounded-0" name="username" required/>
+                        <input type="text" class="regestrieren_email form-control rounded-0" name="username" required />
                         <br />
                         <label for="password" class="regestrieren_label form-label">Passwort</label>
                         <br />
-                        <input type="password" class="regestrieren_passwort1 form-control rounded-0" name="passwort1" required/>
+                        <input type="password" class="regestrieren_passwort1 form-control rounded-0" name="passwort1" required />
                         <br />
                         <label for="password2" class="regestrieren_label form-label">Passwort wiederholen</label>
                         <br />
-                        <input type="password" class="regestrieren_passwort2 form-control rounded-0" name="passwort2" required/>
+                        <input type="password" class="regestrieren_passwort2 form-control rounded-0" name="passwort2" required />
                         <br />
                         <label for="Hand" class="regestrieren_hand form-label">Mit welcher Hand schreiben Sie</label>
                         <br />

@@ -52,7 +52,7 @@ $body =
           <option value="600" class="menue_textOption">10min</option>
           <option value="900" class="menue_textOption">15min</option>
           <option value="1200" class="menue_textOption">20min</option>
-          <option value="60" class="menue_textOption">60s</option>
+          <option value="10" class="menue_textOption">60s</option>
         </select>
         <p class="menue_timer">0</p>
       </div>

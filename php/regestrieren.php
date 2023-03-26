@@ -147,17 +147,17 @@ function hashPasswort($passwort1, $passwort2)
 }
 
 neuenUserAnlegen(
-    $username, 
-    $hand, 
-    $filename, 
-    $json_decoded, 
-    $passwort1, 
-    $passwort2, 
-    $auswertung, 
-    $header, 
-    $footer, 
-    $mainFP, 
-    $mainUV, 
+    $username,
+    $hand,
+    $filename,
+    $json_decoded,
+    $passwort1,
+    $passwort2,
+    $auswertung,
+    $header,
+    $footer,
+    $mainFP,
+    $mainUV,
     $mainOK
 );
 

@@ -227,9 +227,13 @@ const cookieVerwalten = {
             }
         }
     },
-
+    // verschidene pfade je nach server (strato=/ apache=files/Einhandschreibtrainer)
     cookieLöschen: function (cookieName) {
-        document.cookie = cookieName + "=" + "; path=/files/Einhandschreibtrainer" + "; expires=Sun, 05 Jan 1992 23:00:00 UTC"
+        // document.cookie = cookieName + "=" + "; path=/files/Einhandschreibtrainer" + "; expires=Sun, 05 Jan 1992 23:00:00 UTC"
+        // document.cookie = cookieName + "=" + "; path=/" + "; expires=Sun, 05 Jan 1992 23:00:00 UTC"
+        document.cookie = cookieName + "=" + "; path=/Einhandschreibtrainer" + "; expires=Sun, 05 Jan 1992 23:00:00 UTC"
+
+
     }
 }
 
@@ -437,6 +441,7 @@ const Menue = {
             if (this._aktTime >= this._userTime) {
                 setTimeout(() => { clearInterval(this._time), 50 })
                 Auswertung.autoAuswertung()
+                this._aktTime = 0
             }
         })
     },

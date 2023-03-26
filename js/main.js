@@ -205,6 +205,7 @@ const AuswertungBearbeiten = {
 
 // stellt das gesetzte cookie beim login bereit
 // löscht es beim abmelden
+// pfad je nach nach systempfad ändern
 const cookieVerwalten = {
 
     getCookie: function (cookieName) {
@@ -453,6 +454,7 @@ const Menue = {
             if (this._aktTime >= this._userTime) {
                 setTimeout(() => { clearInterval(this._time), 50 })
                 Auswertung.autoAuswertung()
+                this._aktTime = 0
             }
         })
     },

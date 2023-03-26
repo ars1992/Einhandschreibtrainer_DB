@@ -4,13 +4,9 @@ Aufgaben
 true und false bei jsonreader verstehen 
 - synchron oder asynchron hatte bei async öfter probleme (speichern, datenAktualisiren php warnungen)
 
-
-
 statistik löschen
 
 google ads
-
-main.js als min.js erstellen
 
 js serverseitig
 
@@ -20,8 +16,6 @@ groß W im textlauf. vlt aktueller buchstabe width auto ?
 
 location.reload() ggf ersetzen mit WebSocket
 
-Benutzerhandbuch über info button || im header mit anmeldename un menü 
-
 Python zur auswertungsanalyse
 
 json zu db
@@ -30,8 +24,6 @@ evt fehleranzeige mit roter anzeige border text
 
 console.log() entfernen
 
-fehlermeldungen in php ausschalten || steht im buch sicherheit
-- sollte erledigt sein mit befehl der die server php config ändert
 
 //dateien ordnen
 -iwie nie erledigt
@@ -60,7 +52,8 @@ funktionsschreibweise welche this. zulässt ist besser
 da weis man das man sich im objekt befindet Kapselung
 
 daten können auch mit fetch() geholt werden laut buch neuer als xml ajax s549
-evt auch hochladen s556
+evt auch hochladen s556 
+- ist halt asynchron
 
 
 #################################################################################
@@ -142,3 +135,12 @@ Abgeschlossen
 
 //username anstelle von email
 -erledigt 
+
+// main.js als min.js erstellen
+- fertig mit online toll
+
+//fehlermeldungen in php ausschalten || steht im buch sicherheit
+- sollte erledigt sein mit befehl der die server php config ändert
+
+//Benutzerhandbuch über info button || im header mit anmeldename un menü 
+- erledigt
