@@ -60,14 +60,14 @@ $footer = '
 </html>';
 
 
-istUserLoginOk($username, $passwort1, $passwort2, $header, $footer, $mainUV, $mainFP, $mainOK);
+istUserLoginOk($username, $passwort1, $passwort2, $hand, $header, $footer, $mainUV, $mainFP, $mainOK);
 
 // prüft ob eingaben des usernames des Users möglich sind für eine Regestration
-function istUserLoginOk($username, $passwort1, $passwort2, $header, $footer, $mainUV, $mainFP, $mainOK)
+function istUserLoginOk($username, $passwort1, $passwort2, $hand, $header, $footer, $mainUV, $mainFP, $mainOK)
 {
     echo $header;
 
-    $verbindungZurDB = new mysqli("", "root", "", "einhandschreibtrainer");
+    $verbindungZurDB = new mysqli("", "root", "", "test");
     //$sqlAbfrage = "SELECT username FROM user WHERE username = $username;";
     $sqlAbfrage = $verbindungZurDB->prepare("SELECT username FROM user WHERE username = ?;");
     
@@ -87,10 +87,9 @@ function istUserLoginOk($username, $passwort1, $passwort2, $header, $footer, $ma
                     $gehashtesPasswort = hashPasswort($passwort1, $passwort2);
                     $id = 1002;
                     if($gehashtesPasswort != -1){
-                        $sqlNeuenUserAnlegen = $verbindungZurDB->prepare("INSERT INTO user (username, Passwort, hand) VALUES(?, ?, ?)");
+                        $sqlNeuenUserAnlegen = $verbindungZurDB->prepare("INSERT INTO user (user_id, username, passwort, hand) VALUES(1, ?, ?, ?)");
                         $sqlNeuenUserAnlegen->bind_param("sss", $username, $gehashtesPasswort, $hand);
                         $sqlNeuenUserAnlegen->execute();
-                        echo "ok";
                     }else {
                         echo $mainFP;
                     }
