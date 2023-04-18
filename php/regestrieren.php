@@ -60,44 +60,62 @@ $footer = '
 </html>';
 
 
-istUserLoginOk($username, $header, $footer, $mainUV);
+istUserLoginOk($username, $passwort1, $passwort2, $header, $footer, $mainUV, $mainFP, $mainOK);
 
 // prüft ob eingaben des usernames des Users möglich sind für eine Regestration
-function istUserLoginOk($username, $header, $footer, $mainUV)
+function istUserLoginOk($username, $passwort1, $passwort2, $header, $footer, $mainUV, $mainFP, $mainOK)
 {
     echo $header;
 
-    $verbindungZurDB = new mysqli("", "root", "", "test");
+    $verbindungZurDB = new mysqli("", "root", "", "einhandschreibtrainer");
     //$sqlAbfrage = "SELECT username FROM user WHERE username = $username;";
-    $sqlAbfrage = "SELECT username FROM user;";
-
-    $anfrage = $verbindungZurDB->query($sqlAbfrage);
+    $sqlAbfrage = $verbindungZurDB->prepare("SELECT username FROM user WHERE username = ?;");
     
-    if($anfrage->fetch_assoc() == 0){
-        echo "keine ergebnisse";
-    };
+    if($sqlAbfrage){
+        echo "1";
+        if($sqlAbfrage->bind_param("s", $username)){
+            echo "2";
+            $sqlAbfrage->execute();
 
-    while($datensatz = $anfrage->fetch_assoc()){
-        echo $datensatz["username"]. "<br>";
-        echo $username;
-        if($datensatz["username"] == $username){
-            echo $mainUV;
-            break;
-        } else {
-            echo "nutzer anlegen";
+            if($sqlAbfrage->bind_result($username_db)){
+                echo "3";
+                $sqlAbfrage->store_result();
+
+                if($sqlAbfrage->num_rows() == 0){
+                    // nutzer Anlegen
+                    echo "4";
+                    $gehashtesPasswort = hashPasswort($passwort1, $passwort2);
+                    $id = 1002;
+                    if($gehashtesPasswort != -1){
+                        $sqlNeuenUserAnlegen = $verbindungZurDB->prepare("INSERT INTO user (username, Passwort, hand) VALUES(?, ?, ?)");
+                        $sqlNeuenUserAnlegen->bind_param("sss", $username, $gehashtesPasswort, $hand);
+                        $sqlNeuenUserAnlegen->execute();
+                        echo "ok";
+                    }else {
+                        echo $mainFP;
+                    }
+
+                    
+                } else {
+                    echo $mainUV;
+                }
+
+            }else{
+                echo "fehler 3";
+            }
+
+        }else {
+            echo "Fehler 2";
         }
-    };
+
+    } else {
+        echo "Fehler 1";
+    }
 
     echo $footer;
+    $sqlAbfrage->close();
+    $verbindungZurDB->close();
 };
-
-
-
-
-
-
-
-
 
 // hasht das Passwort wen beide eingaben identich sind
 function hashPasswort($passwort1, $passwort2)
