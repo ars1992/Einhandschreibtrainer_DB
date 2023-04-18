@@ -85,9 +85,8 @@ function istUserLoginOk($username, $passwort1, $passwort2, $hand, $header, $foot
                     // nutzer Anlegen
                     echo "4";
                     $gehashtesPasswort = hashPasswort($passwort1, $passwort2);
-                    $id = 1002;
                     if($gehashtesPasswort != -1){
-                        $sqlNeuenUserAnlegen = $verbindungZurDB->prepare("INSERT INTO user (user_id, username, passwort, hand) VALUES(1, ?, ?, ?)");
+                        $sqlNeuenUserAnlegen = $verbindungZurDB->prepare("INSERT INTO user (username, passwort, hand) VALUES(?, ?, ?)");
                         $sqlNeuenUserAnlegen->bind_param("sss", $username, $gehashtesPasswort, $hand);
                         $sqlNeuenUserAnlegen->execute();
                     }else {
