@@ -140,6 +140,10 @@ const DatenAnJsonSenden = {
     },
 }
 
+const DatenAnDBSenden = {
+    
+}
+
 // stellt Auswertungsdaten aus der newUser.json datei bereit
 const AuswertungHolen = {
 
