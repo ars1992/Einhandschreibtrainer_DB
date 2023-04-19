@@ -146,7 +146,30 @@ const DatenAnJsonSenden = {
 }
 
 const DatenAnDBSenden = {
-    
+    _auswertungsDaten: null,
+
+    send: function () {
+        let xhr = new XMLHttpRequest()
+        if (this._auswertungsDaten !== null) {
+            // für server pfad ändern
+
+            // neu für DB
+            xhr.open("PUT", 
+            "injson.php?list=" + JSON.stringify(fehlerVerarbeitung._list.slice(0, 70)) + 
+            "&user=" + cookieVerwalten.getCookie("user") +
+            "&fehlerGesamt=" + fehlerVerarbeitung.getFehlerGesamt() +
+            "&fehlerProzent=" + fehlerVerarbeitung.getFehlerInProzent() +
+            "&anschläge=" + Menue.getAnschlagProMin(), false)
+            xhr.send()
+        } else {
+            console.log("keine Daten vorhanden")
+        }
+    },
+
+    setAuswertungsDaten: function (list) {
+        this._auswertungsDaten = JSON.stringify(list)
+        this.send()
+    },
 }
 
 // stellt Auswertungsdaten aus der newUser.json datei bereit
@@ -247,7 +270,12 @@ const DatenSpeichern = {
             cookieVerwalten.getCookie("user")
             AuswertungBearbeiten.auswertungAusDatenHolen()
             AuswertungBearbeiten.datenAktualisiren()
-            DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
+
+            //für db
+            DatenAnDBSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
+            
+            // für json
+            //DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
             Auswertung.allesZurückSetzen()
         })
     }
