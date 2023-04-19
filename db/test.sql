@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 18. Apr 2023 um 17:35
+-- Erstellungszeit: 19. Apr 2023 um 20:03
 -- Server-Version: 10.4.24-MariaDB
 -- PHP-Version: 8.0.19
 
@@ -35,13 +35,6 @@ CREATE TABLE `auswertung` (
   `fehler_Gesamt` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Daten für Tabelle `auswertung`
---
-
-INSERT INTO `auswertung` (`durchlauf_ID`, `datum`, `anschläge`, `fehler_Prozent`, `fehler_Gesamt`) VALUES
-(1, '2023-04-12', 34, 22, 78);
-
 -- --------------------------------------------------------
 
 --
@@ -53,13 +46,6 @@ CREATE TABLE `durchlauf` (
   `user_ID` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Daten für Tabelle `durchlauf`
---
-
-INSERT INTO `durchlauf` (`durchlauf_ID`, `user_ID`) VALUES
-(1, 1001);
-
 -- --------------------------------------------------------
 
 --
@@ -69,7 +55,7 @@ INSERT INTO `durchlauf` (`durchlauf_ID`, `user_ID`) VALUES
 CREATE TABLE `user` (
   `user_id` int(6) NOT NULL,
   `username` varchar(30) NOT NULL,
-  `Passwort` varchar(50) NOT NULL,
+  `Passwort` varchar(70) NOT NULL,
   `hand` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -78,8 +64,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `username`, `Passwort`, `hand`) VALUES
-(1000, 'davidgeber', '12345abcd', 'rechts'),
-(1001, 'a@b', 'dfhdfbcv', 'links');
+(1, 'a@b', '$2y$10$5alPN9zfwU4fnnKZHEE3..NKiay6xY3z0dTWv9mGYsu1uQDaUp.U6', 'links'),
+(2, 'a@bc', '$2y$10$I70R7p6hJb/37or.q6KTueY5VzCN/UdIGioz3u7b9.aCHXZ7Q7B.6', 'links'),
+(3, 'alessandro.salomon', '$2y$10$zH1bmKW2SQlmj/ynL2eR/.12X//rmQloDshYXU1NN0ghqwTfA08IK', 'links'),
+(4, 'a', '$2y$10$Ldu5iLCr.wVtpktkoptkGuQPVZa3JleHR5XKBcR5jcBHD/eJa9myO', 'rechts');
 
 -- --------------------------------------------------------
 
@@ -94,13 +82,6 @@ CREATE TABLE `zeichenfehler` (
   `c` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Daten für Tabelle `zeichenfehler`
---
-
-INSERT INTO `zeichenfehler` (`durchlauf_ID`, `a`, `b`, `c`) VALUES
-(1, 1, 1, 5);
-
 -- --------------------------------------------------------
 
 --
@@ -113,13 +94,6 @@ CREATE TABLE `zeichengesamt` (
   `b` int(11) NOT NULL,
   `c` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Daten für Tabelle `zeichengesamt`
---
-
-INSERT INTO `zeichengesamt` (`durchlauf_ID`, `a`, `b`, `c`) VALUES
-(1, 1, 45, 235);
 
 --
 -- Indizes der exportierten Tabellen
@@ -138,6 +112,7 @@ ALTER TABLE `auswertung`
 ALTER TABLE `durchlauf`
   ADD PRIMARY KEY (`durchlauf_ID`),
   ADD UNIQUE KEY `user_ID_2` (`user_ID`),
+  ADD UNIQUE KEY `user_ID_3` (`user_ID`),
   ADD KEY `user_ID` (`user_ID`);
 
 --
@@ -176,7 +151,7 @@ ALTER TABLE `durchlauf`
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1002;
+  MODIFY `user_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints der exportierten Tabellen
