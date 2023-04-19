@@ -1,12 +1,4 @@
 <?php
-ini_set("error_reporting", 1);
-$username = htmlentities($_POST["username"]);
-$passwort = htmlentities($_POST["passwort"]);
-
-# file holen und bearbeiten
-$filename = "../json/newUser.json";
-$file = file_get_contents($filename);
-$json_decoded = json_decode($file);
 
 $body = 
 ' <body>
@@ -194,45 +186,65 @@ $fehler = '
   </body>
 </html>';
 
+//ini_set("error_reporting", 1);
+$username = htmlentities($_POST["username"]);
+$passwort = htmlentities($_POST["passwort"]);
+
 
 if ( ! isset($_COOKIE["user"])) {
   echo $fehler;
   return;
 } else {
-  istUserLoginOk($json_decoded, $username, $passwort, $body, $fehler);
+  istUserLoginOk($username, $passwort, $body, $fehler);
 }
 
 // Generirt page je nach "hand" in den userdaten
-function istUserLoginOk($json_decoded, $username, $passwort, $body, $fehler)
-{
-  foreach ($json_decoded->users as $name => $wert) {
-    if ($wert->username == $username  && password_verify($passwort, $wert->passwort)) {
-      if ($wert->hand == "links") {
-        echo '<!DOCTYPE html>
-                <html lang="de">
-                  <head>
-                    <meta charset="UTF-8" />
-                    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                    <link rel="stylesheet" href="../css/styleL.css">
-                    <title>Tastatur Links</title>
-                  </head>';
-      } else {
-        echo '<!DOCTYPE html>
-                <html lang="de">
-                  <head>
-                    <meta charset="UTF-8" />
-                    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                    <link rel="stylesheet" href="../css/styleR.css">
-                    <title>Tastatur Rechts</title>
-                  </head>';
+function istUserLoginOk($username, $passwort, $body, $fehler){
+  $dbVerbindung = new mysqli("", "root", "", "test");
+  $sqlUsername = $dbVerbindung->prepare("SELECT username FROM user WHERE username = ?;");
+  if($sqlUsername->bind_param("s", $username)){
+    $sqlUsername->execute();
+    if($sqlUsername->bind_result($name)){
+      $sqlUsername->store_result();
+      if($sqlUsername->num_rows() == 0){
+        echo $fehler;
       }
-      echo $body;
-      return;
+      else {
+        echo "ok";
+        $sqlPasswort = $dbVerbindung->prepare("SELECT Passwort FROM user WHERE username = ?");
+        if($sqlPasswort->bind_param("s", $username)){
+          $sqlPasswort->execute();
+          if($sqlPasswort->bind_result($passwortDB)){
+            $sqlPasswort->store_result();
+            echo "1";
+            if($sqlPasswort->num_rows() == 0){
+              echo "2";
+            }
+            if($sqlPasswort->fetch()){
+              echo "3";
+              if(password_verify($passwort, $passwortDB)){
+                echo "4";
+                $sqlHand = $dbVerbindung->prepare("SELECT hand FROM user WHERE username = ?");
+                if($sqlHand->bind_param("s", $username)){
+                  echo "5";
+                  $sqlHand->execute();
+                  if($sqlHand->bind_result($handDB)){
+                    $sqlHand->store_result();
+                    echo 6;
+                    if($handDB == "link"){
+                      
+                    }
+                  }
+                }
+              } else {
+                echo " f4";
+              }
+            }
+          } 
+        }
+      }
     }
   }
-  echo $fehler;
 };
 
 ?>
