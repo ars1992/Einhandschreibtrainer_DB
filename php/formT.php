@@ -186,6 +186,16 @@ $fehler = '
   </body>
 </html>';
 
+$links = '<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/styleL.css">
+    <title>Tastatur Links</title>
+  </head>';
+
 //ini_set("error_reporting", 1);
 $username = htmlentities($_POST["username"]);
 $passwort = htmlentities($_POST["passwort"]);
@@ -195,11 +205,11 @@ if ( ! isset($_COOKIE["user"])) {
   echo $fehler;
   return;
 } else {
-  istUserLoginOk($username, $passwort, $body, $fehler);
+  istUserLoginOk($username, $passwort, $body, $fehler, $links);
 }
 
 // Generirt page je nach "hand" in den userdaten
-function istUserLoginOk($username, $passwort, $body, $fehler){
+function istUserLoginOk($username, $passwort, $body, $fehler, $links){
   $dbVerbindung = new mysqli("", "root", "", "test");
   $sqlUsername = $dbVerbindung->prepare("SELECT username FROM user WHERE username = ?;");
   if($sqlUsername->bind_param("s", $username)){
@@ -231,8 +241,10 @@ function istUserLoginOk($username, $passwort, $body, $fehler){
                   if($sqlHand->bind_result($handDB)){
                     $sqlHand->store_result();
                     echo 6;
-                    if($handDB == "link"){
-                      
+                    if($handDB == "links"){
+                      echo $links;
+                    } else {
+                      echo 
                     }
                   }
                 }
@@ -246,5 +258,3 @@ function istUserLoginOk($username, $passwort, $body, $fehler){
     }
   }
 };
-
-?>
