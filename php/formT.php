@@ -196,7 +196,17 @@ $links = '<!DOCTYPE html>
     <title>Tastatur Links</title>
   </head>';
 
-//ini_set("error_reporting", 1);
+$rechts = '<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/styleR.css">
+    <title>Tastatur Rechts</title>
+  </head>';
+
+ini_set("error_reporting", 1);
 $username = htmlentities($_POST["username"]);
 $passwort = htmlentities($_POST["passwort"]);
 
@@ -205,12 +215,20 @@ if ( ! isset($_COOKIE["user"])) {
   echo $fehler;
   return;
 } else {
-  istUserLoginOk($username, $passwort, $body, $fehler, $links);
+  istUserLoginOk($username, $passwort, $body, $fehler, $links, $rechts);
 }
 
 // Generirt page je nach "hand" in den userdaten
-function istUserLoginOk($username, $passwort, $body, $fehler, $links){
+function istUserLoginOk($username, $passwort, $body, $fehler, $links, $rechts){
+  //verbindung
   $dbVerbindung = new mysqli("", "root", "", "test");
+  if($dbVerbindung->connect_error){
+    echo "<script>console.log('DB ERROR')</script>";
+    echo $fehler;
+    return;
+  }
+
+  //User vorhanden
   $sqlUsername = $dbVerbindung->prepare("SELECT username FROM user WHERE username = ?;");
   if($sqlUsername->bind_param("s", $username)){
     $sqlUsername->execute();
@@ -219,37 +237,44 @@ function istUserLoginOk($username, $passwort, $body, $fehler, $links){
       if($sqlUsername->num_rows() == 0){
         echo $fehler;
       }
+
+      // passwort korrekt
       else {
-        echo "ok";
         $sqlPasswort = $dbVerbindung->prepare("SELECT Passwort FROM user WHERE username = ?");
         if($sqlPasswort->bind_param("s", $username)){
           $sqlPasswort->execute();
           if($sqlPasswort->bind_result($passwortDB)){
             $sqlPasswort->store_result();
-            echo "1";
             if($sqlPasswort->num_rows() == 0){
-              echo "2";
+              echo $fehler;
             }
-            if($sqlPasswort->fetch()){
-              echo "3";
+            else if($sqlPasswort->fetch()){
               if(password_verify($passwort, $passwortDB)){
-                echo "4";
                 $sqlHand = $dbVerbindung->prepare("SELECT hand FROM user WHERE username = ?");
+
+                //Welche hand
                 if($sqlHand->bind_param("s", $username)){
-                  echo "5";
                   $sqlHand->execute();
                   if($sqlHand->bind_result($handDB)){
                     $sqlHand->store_result();
-                    echo 6;
                     if($handDB == "links"){
                       echo $links;
                     } else {
-                      echo 
+                      echo $rechts;
                     }
+                    echo $body;
+                    $sqlUsername->close();
+                    $sqlPasswort->close();
+                    $sqlHand->close();
+                    $dbVerbindung->close();
                   }
                 }
               } else {
-                echo " f4";
+                echo $fehler;
+                $sqlUsername->close();
+                $sqlPasswort->close();
+                $dbVerbindung->close();
+                
               }
             }
           } 
