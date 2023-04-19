@@ -1,6 +1,6 @@
 
 <?php
-//ini_set("error_reporting", 1);
+ini_set("error_reporting", 1);
 $username = htmlentities($_POST["username"]);
 $passwort1 = htmlentities($_POST["passwort1"]);
 $passwort2 = htmlentities($_POST["passwort2"]);
@@ -72,23 +72,24 @@ function istUserLoginOk($username, $passwort1, $passwort2, $hand, $header, $foot
     $sqlAbfrage = $verbindungZurDB->prepare("SELECT username FROM user WHERE username = ?;");
     
     if($sqlAbfrage){
-        echo "1";
+        //echo "1";
         if($sqlAbfrage->bind_param("s", $username)){
-            echo "2";
+            //echo "2";
             $sqlAbfrage->execute();
 
             if($sqlAbfrage->bind_result($username_db)){
-                echo "3";
+                //echo "3";
                 $sqlAbfrage->store_result();
 
                 if($sqlAbfrage->num_rows() == 0){
                     // nutzer Anlegen
-                    echo "4";
+                    //echo "4";
                     $gehashtesPasswort = hashPasswort($passwort1, $passwort2);
                     if($gehashtesPasswort != -1){
                         $sqlNeuenUserAnlegen = $verbindungZurDB->prepare("INSERT INTO user (username, passwort, hand) VALUES(?, ?, ?)");
                         $sqlNeuenUserAnlegen->bind_param("sss", $username, $gehashtesPasswort, $hand);
                         $sqlNeuenUserAnlegen->execute();
+                        echo $mainOK;
                     }else {
                         echo $mainFP;
                     }
