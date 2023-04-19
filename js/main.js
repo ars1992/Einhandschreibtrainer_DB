@@ -127,7 +127,12 @@ const DatenAnJsonSenden = {
         let xhr = new XMLHttpRequest()
         if (this._auswertungsDaten !== null) {
             // für server pfad ändern
-            xhr.open("PUT", "injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
+
+            // neu für DB
+            xhr.open("PUT", "injson.php?list=" + JSON.stringify(fehlerVerarbeitung._list.slice(0, 70)) + "&user=" + cookieVerwalten.getCookie("user"), false)
+
+            // zum aufaddiren der ergebnisse in json alt
+            //xhr.open("PUT", "injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
             xhr.send()
         } else {
             console.log("keine Daten vorhanden")
@@ -186,6 +191,9 @@ const AuswertungBearbeiten = {
 
     datenAktualisiren: function () {
         if (this._userDaten) {
+            // zum test für das speichern eines durchlaufes in Db
+            //this._userDaten = fehlerVerarbeitung._list.slice(0, 70)
+            // #################################################
             for (const zeichen of fehlerVerarbeitung._list.slice(0, 70)) {
                 for (const zeichenUserDaten of this._userDaten) {
                     if (zeichen[0] === zeichenUserDaten[0]) {
