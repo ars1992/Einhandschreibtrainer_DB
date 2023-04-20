@@ -1,6 +1,6 @@
 <?php
 
-use function PHPSTORM_META\type;
+
 
 $list = $_REQUEST["list"];
 $username = $_REQUEST["user"];
@@ -51,18 +51,24 @@ if($sqlDurchlaufID = $dbVerbindung->prepare("SELECT durchlauf_id FROM durchlauf 
                 break;
             }
         }
-        echo $maxDurchlaufNr;
     }
 }
+$sqlDurchlaufID->close();
+
+echo $maxDurchlaufNr;
 
 //auswertung speichern
-// if($sqlAuswertungSchreiben = $dbVerbindung->prepare(
-//     "INSERT INTO auswertung (durchlauf_ID, datum, anschläge, fehler_Prozent, fehler_Gesamt)
-//     VALUES (?, ?, ?, ?, ?);")){
-//         if($sqlAuswertungSchreiben->bind_param("isiii", $))
+if($sqlAuswertungSchreiben = $dbVerbindung->prepare(
+    "INSERT INTO auswertung (durchlauf_ID, datum, anschlaege, fehler_Prozent, fehler_Gesamt) VALUES (?, ?, ?, ?, ?);")){
+        echo 12;
+        if($sqlAuswertungSchreiben->bind_param("isiii", $maxDurchlaufNr, $datum, $anschläge, $fehlerInProzent, $fehlerGesamt)){
+            $sqlAuswertungSchreiben->execute();
+            echo " t";
+        }
 
-// }
+} else echo "error";
 
+//
 
 
 
