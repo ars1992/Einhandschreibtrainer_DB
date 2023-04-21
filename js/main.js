@@ -155,7 +155,7 @@ const DatenAnDBSenden = {
 
             // neu für DB
             xhr.open("PUT", 
-            "injson.php?list=" + JSON.stringify(fehlerVerarbeitung._list.slice(0, 70)) + 
+            "injson.php?list=" + JSON.stringify(fehlerVerarbeitung._list.slice(0, 3)) + 
             "&user=" + cookieVerwalten.getCookie("user") +
             "&fehlerGesamt=" + fehlerVerarbeitung.getFehlerGesamt() +
             "&fehlerProzent=" + fehlerVerarbeitung.getFehlerInProzent() +

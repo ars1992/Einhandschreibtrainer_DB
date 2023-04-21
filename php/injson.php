@@ -9,7 +9,7 @@ $fehlerInProzent = $_REQUEST["fehlerProzent"];
 $fehlerGesamt = $_REQUEST["fehlerGesamt"];
 $datum = date("Y-m-d");
 
-
+// abfrage ob daten vorhanden
 
 
 //hier in db
@@ -45,6 +45,7 @@ if($sqlDurchlaufID = $dbVerbindung->prepare("SELECT durchlauf_id FROM durchlauf 
         $durchlaufNr = $sqlDurchlaufID->bind_result($durchlaufNr);
 
         $maxDurchlaufNr = 0;
+        echo $sqlDurchlaufID->fetch(). "hallo";
         while($sqlDurchlaufID->fetch()){
             if($durchlaufNr > $maxDurchlaufNr){
                 $maxDurchlaufNr = $durchlaufNr;
