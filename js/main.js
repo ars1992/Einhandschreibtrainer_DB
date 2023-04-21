@@ -27,7 +27,7 @@ const fehlerVerarbeitung = {
         ["3", 0, 0], ["4", 0, 0], ["5", 0, 0],
         ["6", 0, 0], ["7", 0, 0], ["8", 0, 0],
         ["9", 0, 0],
-        ["'", 0, 0], ["-", 0, 0], ["]", 0, 0],
+        ["\'", 0, 0], ["-", 0, 0], ["]", 0, 0],
         ["^", 0, 0], ["[", 0, 0], ["?", 0, 0],
         ["=", 0, 0], ["#", 0, 0], ["!", 0, 0],
         ["§", 0, 0], ["@", 0, 0], ["_", 0, 0],
@@ -127,7 +127,12 @@ const DatenAnJsonSenden = {
         let xhr = new XMLHttpRequest()
         if (this._auswertungsDaten !== null) {
             // für server pfad ändern
-            xhr.open("PUT", "injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
+
+            // neu für DB
+            xhr.open("PUT", "injson.php?list=" + JSON.stringify(fehlerVerarbeitung._list.slice(0, 70)) + "&user=" + cookieVerwalten.getCookie("user"), false)
+
+            // zum aufaddiren der ergebnisse in json alt
+            //xhr.open("PUT", "injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
             xhr.send()
         } else {
             console.log("keine Daten vorhanden")
@@ -141,7 +146,30 @@ const DatenAnJsonSenden = {
 }
 
 const DatenAnDBSenden = {
-    
+    _auswertungsDaten: null,
+
+    send: function () {
+        let xhr = new XMLHttpRequest()
+        if (this._auswertungsDaten !== null) {
+            // für server pfad ändern
+
+            // neu für DB
+            xhr.open("PUT", 
+            "injson.php?list=" + JSON.stringify(fehlerVerarbeitung._list.slice(0, 3)) + 
+            "&user=" + cookieVerwalten.getCookie("user") +
+            "&fehlerGesamt=" + fehlerVerarbeitung.getFehlerGesamt() +
+            "&fehlerProzent=" + fehlerVerarbeitung.getFehlerInProzent() +
+            "&anschläge=" + Menue.getAnschlagProMin(), false)
+            xhr.send()
+        } else {
+            console.log("keine Daten vorhanden")
+        }
+    },
+
+    setAuswertungsDaten: function (list) {
+        this._auswertungsDaten = JSON.stringify(list)
+        this.send()
+    },
 }
 
 // stellt Auswertungsdaten aus der newUser.json datei bereit
@@ -186,6 +214,9 @@ const AuswertungBearbeiten = {
 
     datenAktualisiren: function () {
         if (this._userDaten) {
+            // zum test für das speichern eines durchlaufes in Db
+            //this._userDaten = fehlerVerarbeitung._list.slice(0, 70)
+            // #################################################
             for (const zeichen of fehlerVerarbeitung._list.slice(0, 70)) {
                 for (const zeichenUserDaten of this._userDaten) {
                     if (zeichen[0] === zeichenUserDaten[0]) {
@@ -239,7 +270,12 @@ const DatenSpeichern = {
             cookieVerwalten.getCookie("user")
             AuswertungBearbeiten.auswertungAusDatenHolen()
             AuswertungBearbeiten.datenAktualisiren()
-            DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
+
+            //für db
+            DatenAnDBSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
+            
+            // für json
+            //DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
             Auswertung.allesZurückSetzen()
         })
     }

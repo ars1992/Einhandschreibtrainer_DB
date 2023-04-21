@@ -240,7 +240,7 @@ function istUserLoginOk($username, $passwort, $body, $fehler, $links, $rechts){
 
       // passwort korrekt
       else {
-        $sqlPasswort = $dbVerbindung->prepare("SELECT Passwort FROM user WHERE username = ?");
+        $sqlPasswort = $dbVerbindung->prepare("SELECT passwort FROM user WHERE username = ?");
         if($sqlPasswort->bind_param("s", $username)){
           $sqlPasswort->execute();
           if($sqlPasswort->bind_result($passwortDB)){
