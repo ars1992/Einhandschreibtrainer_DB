@@ -1,7 +1,5 @@
 <?php
 
-
-
 $list = $_REQUEST["list"];
 $username = $_REQUEST["user"];
 $anschläge = $_REQUEST["anschläge"];
@@ -9,20 +7,21 @@ $fehlerInProzent = $_REQUEST["fehlerProzent"];
 $fehlerGesamt = $_REQUEST["fehlerGesamt"];
 $datum = date("Y-m-d");
 
+
+
 // abfrage ob daten vorhanden
-if( ! isset($anschläge)){
-    exit;
-}
+// if( ! isset($anschläge)){
+//     exit;
+// }
 
 // nützliche Daten ?
-$maxRealAPM = 500;
-if($anschläge <= 0 || $anschläge >= $maxRealAPM){
-    exit;
-}
+// $maxRealAPM = 500;
+// if($anschläge <= 0 || $anschläge >= $maxRealAPM){
+//     exit;
+// }
 
 
-//hier in db
-
+//ab  hier in db
 $dbVerbindung = new mysqli("", "root", "", "test");
 if($dbVerbindung->connect_error){
     echo "<script>console.log('DB ERROR')</script>";
@@ -30,15 +29,14 @@ if($dbVerbindung->connect_error){
 }
 
 
-$sqlUserID = $dbVerbindung->prepare("SELECT user_id FROM user WHERE username = ?");
-
 //user id
-$sqlUserID->bind_param("s", $username);
-$sqlUserID->execute();
-$userID = $sqlUserID->bind_result($userID);
-$sqlUserID->fetch();
-
-
+if($sqlUserID = $dbVerbindung->prepare("SELECT user_id FROM user WHERE username = ?")){
+    if($sqlUserID->bind_param("s", $username)){
+        $sqlUserID->execute();
+        $userID = $sqlUserID->bind_result($userID);
+        $sqlUserID->fetch();
+    }
+}else echo "<script>console.log('DB ERROR')</script>";
 $sqlUserID->close();
 
 //durchlauf speichern
@@ -81,24 +79,86 @@ $sqlAuswertungSchreiben->close();
 
 
 $listArray = json_decode($list);
-
+print_r( $listArray);
 //Fehler speichern
-if($sqlFehlerZeichenSchreiben = $dbVerbindung->prepare("INSERT INTO zeichenfehler (durchlauf_id, a, b, c) VALUES (?, ?, ?, ?);")){
-    if($sqlFehlerZeichenSchreiben->bind_param("iiii", $maxDurchlaufNr, $listArray[0][1], $listArray[1][1], $listArray[2][1])){
+if($sqlFehlerZeichenSchreiben = $dbVerbindung->prepare(
+    "INSERT INTO zeichenfehler (durchlauf_id, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);")){
+    if($sqlFehlerZeichenSchreiben->bind_param("iiiiiiiiiiiiiiiiiiiiiiiiiii", $maxDurchlaufNr, 
+    $listArray[0][1], 
+    $listArray[1][1], 
+    $listArray[2][1],
+    $listArray[3][1],
+    $listArray[4][1],
+    $listArray[5][1],
+    $listArray[6][1],
+    $listArray[7][1],
+    $listArray[8][1],
+    $listArray[9][1],
+    $listArray[10][1],
+    $listArray[11][1],
+    $listArray[12][1],
+    $listArray[13][1],
+    $listArray[14][1],
+    $listArray[15][1],
+    $listArray[16][1],
+    $listArray[17][1],
+    $listArray[18][1],
+    $listArray[19][1],
+    $listArray[20][1],
+    $listArray[21][1],
+    $listArray[22][1],
+    $listArray[23][1],
+    $listArray[24][1],
+    $listArray[25][1]
+    )){
         $sqlFehlerZeichenSchreiben->execute();
+        echo 12;
     }
 } else echo "<script>console.log('DB ERROR')</script>";
 $sqlFehlerZeichenSchreiben->close();
 
-if($sqlGesamtZeichenSchreiben = $dbVerbindung->prepare("INSERT INTO zeichengesamt (durchlauf_id, a, b, c) VALUES (?, ?, ?, ?);")){
-    if($sqlGesamtZeichenSchreiben->bind_param("iiii", $maxDurchlaufNr, $listArray[0][2], $listArray[1][2], $listArray[2][2])){
+//gesamt speichern
+if($sqlGesamtZeichenSchreiben = $dbVerbindung->prepare(
+    "INSERT INTO zeichengesamt (durchlauf_id, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z)  
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);")){
+    if($sqlGesamtZeichenSchreiben->bind_param("iiiiiiiiiiiiiiiiiiiiiiiiiii", $maxDurchlaufNr, 
+    $listArray[0][2], 
+    $listArray[1][2], 
+    $listArray[2][2],
+    $listArray[3][2],
+    $listArray[4][2],
+    $listArray[5][2],
+    $listArray[6][2],
+    $listArray[7][2],
+    $listArray[8][2],
+    $listArray[9][2],
+    $listArray[10][2],
+    $listArray[11][2],
+    $listArray[12][2],
+    $listArray[13][2],
+    $listArray[14][2],
+    $listArray[15][2],
+    $listArray[16][2],
+    $listArray[17][2],
+    $listArray[18][2],
+    $listArray[19][2],
+    $listArray[20][2],
+    $listArray[21][2],
+    $listArray[22][2],
+    $listArray[23][2],
+    $listArray[24][2],
+    $listArray[25][2]
+    )){
         $sqlGesamtZeichenSchreiben->execute();
+        echo 12;
     }
 } else echo "<script>console.log('DB ERROR')</script>";
 $sqlGesamtZeichenSchreiben->close();
 $dbVerbindung->close();
 
+// http://www.terragon.de/kuenstliche-intelligenz/python-tutorials/python-in-php-ausfuehren/
 
-
+exec("python C:/Users/aless/PycharmProjects/Einhandschreibtrainer_Auswertung/main.py $username");
 
 ?>
