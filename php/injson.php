@@ -10,15 +10,15 @@ $datum = date("Y-m-d");
 
 
 // abfrage ob daten vorhanden
-// if( ! isset($anschläge)){
-//     exit;
-// }
+if( ! isset($anschläge)){
+    exit;
+}
 
 // nützliche Daten ?
-// $maxRealAPM = 500;
-// if($anschläge <= 0 || $anschläge >= $maxRealAPM){
-//     exit;
-// }
+$maxRealAPM = 5000;
+if($anschläge <= 0 || $anschläge >= $maxRealAPM){
+    exit;
+}
 
 
 //ab  hier in db
@@ -82,8 +82,7 @@ $listArray = json_decode($list);
 print_r( $listArray);
 //Fehler speichern
 if($sqlFehlerZeichenSchreiben = $dbVerbindung->prepare(
-    "INSERT INTO zeichenfehler (durchlauf_id, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);")){
+    "INSERT INTO zeichenfehler (durchlauf_id, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);")){
     if($sqlFehlerZeichenSchreiben->bind_param("iiiiiiiiiiiiiiiiiiiiiiiiiii", $maxDurchlaufNr, 
     $listArray[0][1], 
     $listArray[1][1], 
@@ -113,15 +112,13 @@ if($sqlFehlerZeichenSchreiben = $dbVerbindung->prepare(
     $listArray[25][1]
     )){
         $sqlFehlerZeichenSchreiben->execute();
-        echo 12;
     }
 } else echo "<script>console.log('DB ERROR')</script>";
 $sqlFehlerZeichenSchreiben->close();
 
 //gesamt speichern
 if($sqlGesamtZeichenSchreiben = $dbVerbindung->prepare(
-    "INSERT INTO zeichengesamt (durchlauf_id, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z)  
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);")){
+    "INSERT INTO zeichengesamt (durchlauf_id, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);")){
     if($sqlGesamtZeichenSchreiben->bind_param("iiiiiiiiiiiiiiiiiiiiiiiiiii", $maxDurchlaufNr, 
     $listArray[0][2], 
     $listArray[1][2], 
@@ -151,7 +148,6 @@ if($sqlGesamtZeichenSchreiben = $dbVerbindung->prepare(
     $listArray[25][2]
     )){
         $sqlGesamtZeichenSchreiben->execute();
-        echo 12;
     }
 } else echo "<script>console.log('DB ERROR')</script>";
 $sqlGesamtZeichenSchreiben->close();
