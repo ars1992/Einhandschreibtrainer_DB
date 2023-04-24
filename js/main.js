@@ -40,6 +40,8 @@ const fehlerVerarbeitung = {
         [";", 0, 0], ["}", 0, 0], ["{", 0, 0],
     ],
 
+    listUnsortiert: null,
+
     istRichtigeReihenfolge: function (list) {
         if (!list) {
             return false
@@ -66,6 +68,10 @@ const fehlerVerarbeitung = {
             }
         }
         return list
+    },
+
+    getKopieListeUnsortiert: function() {
+        return this._list
     },
 
     setFehlerZähler: function (eingabe, anzeige) {
@@ -129,10 +135,10 @@ const DatenAnJsonSenden = {
             // für server pfad ändern
 
             // neu für DB
-            xhr.open("PUT", "injson.php?list=" + JSON.stringify(fehlerVerarbeitung._list.slice(0, 70)) + "&user=" + cookieVerwalten.getCookie("user"), false)
+           // xhr.open("PUT", "_injson.php?list=" + JSON.stringify(fehlerVerarbeitung._list.slice(0, 70)) + "&user=" + cookieVerwalten.getCookie("user"), false)
 
             // zum aufaddiren der ergebnisse in json alt
-            //xhr.open("PUT", "injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
+            xhr.open("PUT", "_injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
             xhr.send()
         } else {
             console.log("keine Daten vorhanden")
@@ -272,10 +278,10 @@ const DatenSpeichern = {
             AuswertungBearbeiten.datenAktualisiren()
 
             //für db
-            DatenAnDBSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
+            DatenAnDBSenden.setAuswertungsDaten(fehlerVerarbeitung._list)
             
             // für json
-            //DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
+            DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
             Auswertung.allesZurückSetzen()
         })
     }
@@ -312,6 +318,7 @@ const Auswertung = {
 
 
     autoAuswertung: () => {
+
         Auswertung.erstellenGesamtAuswertung()
 
         Auswertung.inAuswertung = true
