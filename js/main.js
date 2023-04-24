@@ -40,7 +40,7 @@ const fehlerVerarbeitung = {
         [";", 0, 0], ["}", 0, 0], ["{", 0, 0],
     ],
 
-    listUnsortiert: null,
+
 
     istRichtigeReihenfolge: function (list) {
         if (!list) {
@@ -71,7 +71,11 @@ const fehlerVerarbeitung = {
     },
 
     getKopieListeUnsortiert: function() {
-        return this._list
+        let neueListe = []
+        for (const element of this._list){
+            neueListe.push(element)
+        }
+        return neueListe
     },
 
     setFehlerZähler: function (eingabe, anzeige) {
@@ -281,7 +285,7 @@ const DatenSpeichern = {
             DatenAnDBSenden.setAuswertungsDaten(fehlerVerarbeitung._list)
             
             // für json
-            DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
+            // DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
             Auswertung.allesZurückSetzen()
         })
     }
@@ -317,12 +321,16 @@ const Auswertung = {
     inAuswertung: false,
 
 
-    autoAuswertung: () => {
 
+    autoAuswertung: () => {
+        let x = fehlerVerarbeitung.getKopieListeUnsortiert()
+        console.log(x)
+        alert()
+        
         Auswertung.erstellenGesamtAuswertung()
 
         Auswertung.inAuswertung = true
-        let listeTopFünfFehler = fehlerVerarbeitung.getfehlerAuswertung(fehlerVerarbeitung._list).slice(0, 5)
+        let listeTopFünfFehler = fehlerVerarbeitung.getfehlerAuswertung(fehlerVerarbeitung.getKopieListeUnsortiert()).slice(0, 5)
         setTimeout(clearInterval(Menue._time))
         StartAnzeige.ausblenden()
         Auswertung.auswertungAnzeigen.classList.remove("auswertung_none")
