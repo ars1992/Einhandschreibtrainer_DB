@@ -255,11 +255,11 @@ function istUserLoginOk($username, $passwort, $body, $fehler, $links, $rechts){
                 //Welche hand
                 if($sqlHand->bind_param("s", $username)){
                   $sqlHand->execute();
-                  if($sqlHand->bind_result($handDB)){
+                  if($handDB = $sqlHand->bind_result($handDB)){
                     $sqlHand->store_result();
-                    if($handDB == "links"){
+                    if($handDB == "links"){  
                       echo $links;
-                    } else {
+                    } else if ($handDB == "rechts") {
                       echo $rechts;
                     }
                     echo $body;

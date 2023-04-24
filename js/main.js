@@ -40,6 +40,8 @@ const fehlerVerarbeitung = {
         [";", 0, 0], ["}", 0, 0], ["{", 0, 0],
     ],
 
+
+
     istRichtigeReihenfolge: function (list) {
         if (!list) {
             return false
@@ -66,6 +68,14 @@ const fehlerVerarbeitung = {
             }
         }
         return list
+    },
+
+    getKopieListeUnsortiert: function() {
+        let neueListe = []
+        for (const element of this._list){
+            neueListe.push(element)
+        }
+        return neueListe
     },
 
     setFehlerZähler: function (eingabe, anzeige) {
@@ -129,10 +139,10 @@ const DatenAnJsonSenden = {
             // für server pfad ändern
 
             // neu für DB
-            xhr.open("PUT", "injson.php?list=" + JSON.stringify(fehlerVerarbeitung._list.slice(0, 70)) + "&user=" + cookieVerwalten.getCookie("user"), false)
+           // xhr.open("PUT", "_injson.php?list=" + JSON.stringify(fehlerVerarbeitung._list.slice(0, 70)) + "&user=" + cookieVerwalten.getCookie("user"), false)
 
             // zum aufaddiren der ergebnisse in json alt
-            //xhr.open("PUT", "injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
+            xhr.open("PUT", "_injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
             xhr.send()
         } else {
             console.log("keine Daten vorhanden")
@@ -272,10 +282,10 @@ const DatenSpeichern = {
             AuswertungBearbeiten.datenAktualisiren()
 
             //für db
-            DatenAnDBSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
+            DatenAnDBSenden.setAuswertungsDaten(fehlerVerarbeitung._list)
             
             // für json
-            //DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
+            // DatenAnJsonSenden.setAuswertungsDaten(AuswertungBearbeiten._userDaten)
             Auswertung.allesZurückSetzen()
         })
     }
@@ -311,11 +321,16 @@ const Auswertung = {
     inAuswertung: false,
 
 
+
     autoAuswertung: () => {
+        let x = fehlerVerarbeitung.getKopieListeUnsortiert()
+        console.log(x)
+        alert()
+        
         Auswertung.erstellenGesamtAuswertung()
 
         Auswertung.inAuswertung = true
-        let listeTopFünfFehler = fehlerVerarbeitung.getfehlerAuswertung(fehlerVerarbeitung._list).slice(0, 5)
+        let listeTopFünfFehler = fehlerVerarbeitung.getfehlerAuswertung(fehlerVerarbeitung.getKopieListeUnsortiert()).slice(0, 5)
         setTimeout(clearInterval(Menue._time))
         StartAnzeige.ausblenden()
         Auswertung.auswertungAnzeigen.classList.remove("auswertung_none")
