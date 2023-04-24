@@ -125,31 +125,31 @@ const fehlerVerarbeitung = {
 }
 
 // Sendet die Bearbeitete Daten an PHP injson.php
-// const DatenAnJsonSenden = {
+const DatenAnJsonSenden = {
 
-//     _auswertungsDaten: null,
+    _auswertungsDaten: null,
 
-//     send: function () {
-//         let xhr = new XMLHttpRequest()
-//         if (this._auswertungsDaten !== null) {
-//             // für server pfad ändern
+    send: function () {
+        let xhr = new XMLHttpRequest()
+        if (this._auswertungsDaten !== null) {
+            // für server pfad ändern
 
-//             // neu für DB
-//            // xhr.open("PUT", "_injson.php?list=" + JSON.stringify(fehlerVerarbeitung._list.slice(0, 70)) + "&user=" + cookieVerwalten.getCookie("user"), false)
+            // neu für DB
+           // xhr.open("PUT", "_injson.php?list=" + JSON.stringify(fehlerVerarbeitung._list.slice(0, 70)) + "&user=" + cookieVerwalten.getCookie("user"), false)
 
-//             // zum aufaddiren der ergebnisse in json alt
-//             xhr.open("PUT", "_injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
-//             xhr.send()
-//         } else {
-//             console.log("keine Daten vorhanden")
-//         }
-//     },
+            // zum aufaddiren der ergebnisse in json alt
+            xhr.open("PUT", "_injson.php?list=" + this._auswertungsDaten + "&user=" + cookieVerwalten.getCookie("user"), false)
+            xhr.send()
+        } else {
+            console.log("keine Daten vorhanden")
+        }
+    },
 
-//     setAuswertungsDaten: function (list) {
-//         this._auswertungsDaten = JSON.stringify(list)
-//         this.send()
-//     },
-// }
+    setAuswertungsDaten: function (list) {
+        this._auswertungsDaten = JSON.stringify(list)
+        this.send()
+    },
+}
 
 const DatenAnDBSenden = {
     _auswertungsDaten: null,
