@@ -259,7 +259,7 @@ function istUserLoginOk($username, $passwort, $body, $fehler, $links, $rechts){
                     $sqlHand->store_result();
                     if($handDB == "links"){  
                       echo $links;
-                    } else if ($handDB == "rechts") {
+                    } else {
                       echo $rechts;
                     }
                     echo $body;

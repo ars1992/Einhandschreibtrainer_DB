@@ -325,7 +325,6 @@ const Auswertung = {
     autoAuswertung: () => {
         let x = fehlerVerarbeitung.getKopieListeUnsortiert()
         console.log(x)
-        alert()
         
         Auswertung.erstellenGesamtAuswertung()
 
